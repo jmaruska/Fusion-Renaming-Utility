@@ -1,0 +1,377 @@
+/* Autodesk Design System - Palette Layouts */
+
+/* Main palette container */
+.adsk-palette {
+    display: flex;
+    height: 100vh;
+    background-color: var(--adsk-color-bg-base);
+    overflow: hidden;
+}
+
+/* Palette sidebar */
+.adsk-palette-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: var(--adsk-sidebar-width);
+    background-color: var(--adsk-color-bg-surface);
+    border-right: 1px solid var(--adsk-color-border-default);
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.adsk-palette-sidebar--narrow {
+    width: 200px;
+}
+
+.adsk-palette-sidebar--wide {
+    width: 320px;
+}
+
+.adsk-palette-sidebar--collapsible {
+    transition: width var(--adsk-transition-base);
+}
+
+.adsk-palette-sidebar--collapsed {
+    width: 48px;
+    overflow: hidden;
+}
+
+/* Palette content area */
+.adsk-palette-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    background-color: var(--adsk-color-bg-surface);
+}
+
+/* Palette header */
+.adsk-palette-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--adsk-space-md) var(--adsk-space-lg);
+    background-color: var(--adsk-color-bg-disabled);
+    border-bottom: 1px solid var(--adsk-color-border-default);
+    min-height: 56px;
+}
+
+.adsk-palette-header h1,
+.adsk-palette-header h2,
+.adsk-palette-header h3 {
+    margin: 0;
+    font-weight: var(--adsk-font-weight-semibold);
+    color: var(--adsk-color-text-primary);
+}
+
+.adsk-palette-header .adsk-palette-actions {
+    display: flex;
+    gap: var(--adsk-space-sm);
+}
+
+/* Palette body */
+.adsk-palette-body {
+    flex: 1;
+    padding: var(--adsk-space-lg);
+    overflow-y: auto;
+}
+
+.adsk-palette-body--no-padding {
+    padding: 0;
+}
+
+.adsk-palette-body--small-padding {
+    padding: var(--adsk-space-md);
+}
+
+/* Palette sections within sidebar */
+.adsk-palette-section {
+    padding: var(--adsk-space-md);
+    border-bottom: 1px solid var(--adsk-color-border-subtle);
+}
+
+.adsk-palette-section:last-child {
+    border-bottom: none;
+}
+
+.adsk-palette-section h4 {
+    margin: 0 0 var(--adsk-space-sm) 0;
+    font-size: var(--adsk-font-size-sm);
+    font-weight: var(--adsk-font-weight-semibold);
+    color: var(--adsk-color-text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.adsk-palette-section--collapsible h4 {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.adsk-palette-section--collapsible h4::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 3px solid currentColor;
+    transition: transform var(--adsk-transition-fast);
+}
+
+.adsk-palette-section--collapsed h4::after {
+    transform: rotate(-90deg);
+}
+
+.adsk-palette-section--collapsed .adsk-palette-section-content {
+    display: none;
+}
+
+/* Palette navigation */
+.adsk-palette-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: var(--adsk-space-sm);
+}
+
+.adsk-palette-nav-item {
+    display: flex;
+    align-items: center;
+    gap: var(--adsk-space-sm);
+    padding: var(--adsk-space-sm);
+    color: var(--adsk-color-text-secondary);
+    text-decoration: none;
+    border-radius: var(--adsk-border-radius-small);
+    transition: all var(--adsk-transition-fast);
+    font-size: var(--adsk-font-size-sm);
+}
+
+.adsk-palette-nav-item:hover {
+    background-color: var(--adsk-color-bg-disabled);
+    color: var(--adsk-color-text-primary);
+}
+
+.adsk-palette-nav-item--active {
+    background-color: var(--adsk-color-accent-primary);
+    color: var(--adsk-color-text-inverse);
+}
+
+.adsk-palette-nav-item--active:hover {
+    background-color: var(--adsk-color-accent-primary-hover);
+}
+
+.adsk-palette-nav-item .adsk-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+/* Resizable palette */
+.adsk-palette-resizer {
+    width: 4px;
+    background-color: transparent;
+    cursor: col-resize;
+    transition: background-color var(--adsk-transition-fast);
+    flex-shrink: 0;
+}
+
+.adsk-palette-resizer:hover {
+    background-color: var(--adsk-color-border-default);
+}
+
+.adsk-palette-resizer--active {
+    background-color: var(--adsk-color-accent-primary);
+}
+
+/* Split palette layout */
+.adsk-palette--split {
+    flex-direction: row;
+}
+
+.adsk-palette--split .adsk-palette-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.adsk-palette-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.adsk-palette-secondary {
+    width: var(--adsk-panel-width);
+    background-color: var(--adsk-color-bg-surface);
+    border-left: 1px solid var(--adsk-color-border-default);
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+/* Floating palettes */
+.adsk-palette-floating {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    width: var(--adsk-panel-width);
+    max-height: calc(100vh - 100px);
+    background-color: var(--adsk-color-bg-surface);
+    border: 1px solid var(--adsk-color-border-default);
+    border-radius: var(--adsk-border-radius-medium);
+    box-shadow: var(--adsk-shadow-lg);
+    z-index: var(--adsk-z-modal);
+    resize: both;
+    overflow: auto;
+}
+
+.adsk-palette-floating .adsk-palette-header {
+    cursor: move;
+    user-select: none;
+}
+
+/* Tool palette (icon-based sidebar) */
+.adsk-tool-palette {
+    display: flex;
+    flex-direction: column;
+    width: 48px;
+    background-color: var(--adsk-color-bg-surface);
+    border-right: 1px solid var(--adsk-color-border-default);
+    padding: var(--adsk-space-sm);
+    gap: var(--adsk-space-xs);
+    flex-shrink: 0;
+}
+
+.adsk-tool-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+    color: var(--adsk-color-text-secondary);
+    border: 1px solid transparent;
+    border-radius: var(--adsk-border-radius-small);
+    cursor: pointer;
+    transition: all var(--adsk-transition-fast);
+    text-decoration: none;
+}
+
+.adsk-tool-item:hover {
+    background-color: var(--adsk-color-bg-disabled);
+    color: var(--adsk-color-text-primary);
+    border-color: var(--adsk-color-border-default);
+}
+
+.adsk-tool-item--active {
+    background-color: var(--adsk-color-accent-primary);
+    color: var(--adsk-color-text-inverse);
+    border-color: var(--adsk-color-accent-primary);
+}
+
+.adsk-tool-item--active:hover {
+    background-color: var(--adsk-color-accent-primary-hover);
+    border-color: var(--adsk-color-accent-primary-hover);
+}
+
+/* Properties panel layout */
+.adsk-properties-panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--adsk-space-md);
+    padding: var(--adsk-space-md);
+}
+
+.adsk-property-group {
+    background-color: var(--adsk-color-bg-surface);
+    border: 1px solid var(--adsk-color-border-subtle);
+    border-radius: var(--adsk-border-radius-medium);
+    overflow: hidden;
+}
+
+.adsk-property-group-header {
+    padding: var(--adsk-space-sm) var(--adsk-space-md);
+    background-color: var(--adsk-color-bg-disabled);
+    border-bottom: 1px solid var(--adsk-color-border-subtle);
+    font-size: var(--adsk-font-size-sm);
+    font-weight: var(--adsk-font-weight-semibold);
+    color: var(--adsk-color-text-primary);
+}
+
+.adsk-property-group-body {
+    padding: var(--adsk-space-md);
+}
+
+/* Responsive palette behavior */
+@media (max-width: 1024px) {
+    .adsk-palette-sidebar {
+        width: 200px;
+    }
+    
+    .adsk-palette-secondary {
+        width: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .adsk-palette {
+        flex-direction: column;
+    }
+    
+    .adsk-palette-sidebar {
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+        border-right: none;
+        border-bottom: 1px solid var(--adsk-color-border-default);
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    
+    .adsk-palette-nav {
+        flex-direction: row;
+        padding: var(--adsk-space-sm);
+        white-space: nowrap;
+    }
+    
+    .adsk-palette-nav-item {
+        flex-shrink: 0;
+    }
+    
+    .adsk-palette--split .adsk-palette-content {
+        flex-direction: column;
+    }
+    
+    .adsk-palette-secondary {
+        width: 100%;
+        height: 200px;
+        border-left: none;
+        border-top: 1px solid var(--adsk-color-border-default);
+    }
+    
+    .adsk-palette-floating {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        width: auto;
+        max-height: 50vh;
+        border-radius: 0;
+    }
+    
+    .adsk-tool-palette {
+        width: 100%;
+        height: 56px;
+        flex-direction: row;
+        padding: var(--adsk-space-sm) var(--adsk-space-md);
+        border-right: none;
+        border-bottom: 1px solid var(--adsk-color-border-default);
+        overflow-x: auto;
+    }
+    
+    .adsk-tool-item {
+        flex-shrink: 0;
+    }
+}

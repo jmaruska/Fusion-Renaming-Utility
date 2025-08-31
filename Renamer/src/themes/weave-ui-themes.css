@@ -1,0 +1,555 @@
+/* Autodesk Weave UI - Universal Theme System */
+/* 
+ * Drop-in theme system for Autodesk add-ins and applications
+ * Compatible with Maya, Inventor, Fusion 360, AutoCAD, and other Autodesk products
+ * Provides authentic Autodesk look and feel without requiring React or official Weave
+ */
+
+:root {
+    /* ============================================================================ */
+    /* THEME-INDEPENDENT VARIABLES */
+    /* These variables are consistent across all themes */
+    /* ============================================================================ */
+    
+    /* Reference Colors - Universal across themes per Weave spec */
+    --adsk-color-reference-accent: var(--primary-autodeskBlue-500); /* colorScheme.reference.accent */
+    --adsk-color-reference-base: var(--primary-charcoal-600);       /* colorScheme.reference.base */
+    
+    /* Surface Mappings - Using universal surface levels */
+    --adsk-color-surface-level100: var(--surface-level100);   /* colorScheme.surface.level100 */
+    --adsk-color-surface-level200: var(--surface-level200);   /* colorScheme.surface.level200 */
+    --adsk-color-surface-level250: var(--surface-level250);   /* colorScheme.surface.level250 */
+    --adsk-color-surface-level300: var(--surface-level300);   /* colorScheme.surface.level300 */
+    --adsk-color-surface-level350: var(--surface-level350);   /* colorScheme.surface.level350 */
+    
+    /* Semantic Design Tokens - Theme independent */
+    --adsk-color-primary: var(--adsk-color-reference-accent);
+    --adsk-color-primary-hover: var(--primary-autodeskBlue-600);
+    --adsk-color-primary-active: var(--primary-autodeskBlue-700);
+    
+    /* Status Colors - Following official Weave colorScheme structure */
+    --adsk-color-status-error: var(--secondary-red-600);           /* colorScheme.status.error */
+    --adsk-color-status-success: var(--secondary-green-600);       /* colorScheme.status.success */
+    --adsk-color-status-warning: var(--secondary-yellowOrange-500); /* colorScheme.status.warning */
+    --adsk-color-status-info: var(--adsk-color-reference-accent);  /* colorScheme.status.info */
+    --adsk-color-status-read: rgba(128, 128, 128, 0.4);           /* colorScheme.status.read */
+    
+    /* Indicator Colors - Theme independent semantics */
+    --adsk-color-indicator-default: rgba(102, 102, 102, 0.7);     /* colorScheme.indicator.default */
+    --adsk-color-indicator-hover: var(--primary-charcoal-700);    /* colorScheme.indicator.hover */
+    --adsk-color-indicator-pressed: var(--primary-charcoal-900);  /* colorScheme.indicator.pressed */
+    --adsk-color-indicator-on: var(--adsk-color-reference-accent); /* colorScheme.indicator.on */
+    
+    /* Universal overlay colors */
+    --adsk-color-bg-overlay: var(--black-500);
+    
+    /* ============================================================================ */
+    /* CONSOLIDATED HALO SYSTEM */
+    /* Dedicated theme-specific halo colors for maximum reliability */
+    /* ============================================================================ */
+    
+    /* Light Gray Theme Halos */
+    --adsk-halo-hover-color: rgba(186, 191, 199, 0.15);    /* light gray, subtle */
+    --adsk-halo-active-color: rgba(245, 245, 245, 0.25);   /* light gray, semi-transparent */
+    --adsk-halo-focus-color: rgba(49, 152, 235, 0.25);     /* blue, universal keyboard focus */
+    
+    /* Complete box-shadow values - reliable across all browsers */
+    --adsk-halo-hover: var(--adsk-halo-hover-color) 0px 0px 0px 2px;
+    --adsk-halo-active: var(--adsk-halo-active-color) 0px 0px 0px 4px;
+    --adsk-halo-focus: var(--adsk-halo-focus-color) 0px 0px 0px 4px;
+    --adsk-halo-subtle: transparent 0px 0px 0px 1px;
+    
+    /* Error state halos */
+    --adsk-halo-error-hover: rgba(255, 75, 75, 0.25) 0px 0px 0px 2px;
+    --adsk-halo-error-active: rgba(255, 75, 75, 0.4) 0px 0px 0px 4px;
+}
+
+/* OS Dark Mode Preference - defaults to Dark Gray theme */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Surface Mappings - Still use universal surface levels for modals */
+        --adsk-color-surface-level100: var(--surface-level100);   /* Modals still use bright surfaces */
+        --adsk-color-surface-level200: var(--surface-level200);   
+        --adsk-color-surface-level250: var(--surface-level250);   
+        --adsk-color-surface-level300: var(--surface-level300);   
+        --adsk-color-surface-level350: var(--surface-level350);   
+        
+        /* Background Colors - Dark Gray Theme optimized for tool-level usage */
+        --adsk-color-bg-primary: var(--surface-darkGray-200);     /* Standard panels - matches Fusion #394454 */
+        --adsk-color-bg-secondary: var(--surface-darkGray-200);
+        --adsk-color-bg-tertiary: var(--surface-darkGray-250);
+        --adsk-color-bg-quaternary: var(--surface-darkGray-300);
+        --adsk-color-bg-quinary: var(--surface-darkGray-350);
+        
+        /* Surface level aliases for explicit usage */
+        --adsk-color-bg-modal: var(--surface-darkGray-100);       /* Bright modal surfaces */
+        --adsk-color-bg-panel: var(--surface-darkGray-200);       /* Standard tool panels */
+        --adsk-color-bg-container: var(--surface-darkGray-300);   /* Background areas */
+        
+        /* Body background - Tool-level default */
+        --adsk-color-bg-body: var(--surface-darkGray-300);        /* Container level */
+        }
+    }
+
+/* Dark Gray Theme */
+.theme-dark-gray {
+    /* ============================================================================ */
+    /* CONSOLIDATED THEME VARIABLES - Dark Gray */
+    /* ============================================================================ */
+    
+    /* Dark Gray Theme Halos */
+    --adsk-halo-hover-color: rgba(186, 191, 199, 0.15);    /* light gray, subtle */
+    --adsk-halo-active-color: rgba(245, 245, 245, 0.25);   /* white, semi-transparent */
+    --adsk-halo-focus-color: rgba(49, 152, 235, 0.25);     /* blue, universal keyboard focus */
+    
+    /* Scrollbar Colors */
+    --adsk-scrollbar-thumb-color: rgba(255, 255, 255, 0.2); /* light scrollbar for dark theme */
+    
+    /* Core Theme Colors */
+    --adsk-theme-border-base: var(--primary-charcoal-200);
+    --adsk-theme-border-subtle: rgba(220, 220, 220, 0.25);
+    --adsk-theme-border-interactive: var(--primary-charcoal-200);
+    --adsk-theme-focus-border: var(--primary-autodeskBlue-400);
+    
+    /* Halo Colors (4px box-shadows) */
+    --adsk-theme-halo-hover: rgba(220, 220, 220, 0.15);
+    --adsk-theme-halo-focus: rgba(220, 220, 220, 0.25);
+    --adsk-theme-halo-focus-keyboard: rgba(6, 150, 215, 0.25);
+    --adsk-theme-halo-active: rgba(255, 255, 255, 0.25);
+
+    /* Text Colors */
+    --adsk-theme-text-primary: var(--grey-100);
+    --adsk-theme-text-secondary: var(--grey-100);
+    --adsk-theme-text-tertiary: var(--primary-charcoal-200);
+    
+    /* ============================================================================ */
+    /* BACKGROUND COLORS */
+    /* ============================================================================ */
+    
+    --adsk-color-bg-primary: var(--surface-darkGray-200);
+    --adsk-color-bg-secondary: var(--surface-darkGray-200);
+    --adsk-color-bg-tertiary: var(--surface-darkGray-250);
+    --adsk-color-bg-quaternary: var(--surface-darkGray-300);
+    --adsk-color-bg-quinary: var(--surface-darkGray-350);
+    
+    /* Surface level aliases for explicit usage */
+    --adsk-color-bg-modal: var(--surface-darkGray-100);       /* Bright modal surfaces */
+    --adsk-color-bg-panel: var(--surface-darkGray-200);       /* Standard tool panels */
+    --adsk-color-bg-container: var(--surface-darkGray-300);   /* Background areas */
+    
+    /* Body background - Tool-level default */
+    --adsk-color-bg-body: var(--surface-darkGray-300);
+    
+    /* ============================================================================ */
+    /* PROPAGATED ELEMENT VARIABLES - All inherit from theme variables */
+    /* ============================================================================ */
+    
+    /* Text Colors */
+    --adsk-color-text-primary: var(--adsk-theme-text-primary);
+    --adsk-color-text-secondary: var(--adsk-theme-text-secondary);
+    --adsk-color-text-tertiary: var(--adsk-theme-text-tertiary);
+    
+    /* Border Colors */
+    --adsk-color-border-default: rgba(220, 220, 220, 0.75);
+    --adsk-color-border-subtle: rgba(220, 220, 220, 0.5);
+    --adsk-color-border-strong: var(--adsk-theme-border-base);
+    --adsk-color-border-focus: var(--adsk-theme-focus-border);
+    
+    /* Input Box Border Colors */
+    --adsk-input-border-default: var(--adsk-color-border-subtle);
+    --adsk-input-border-hover: var(--adsk-color-border-strong);
+    --adsk-input-border-hover-shadow: var(--adsk-theme-halo-hover);
+    
+    /* Form control halos */
+    --adsk-form-shadow-subtle: rgba(220, 220, 220, 0.0);   /* Default state - no visible halo */
+    --adsk-form-shadow-hover: var(--adsk-theme-halo-hover);
+    --adsk-form-shadow-active: var(--adsk-theme-halo-active);
+    
+    /* Checkbox styles */
+    --adsk-color-checkbox-bg: var(--white-100);
+    --adsk-color-checkbox-bg-checked: var(--primary-white);
+    --adsk-color-checkbox-border: var(--adsk-theme-border-subtle);
+    --adsk-color-checkbox-border-hover: var(--adsk-theme-border-interactive);
+    --adsk-color-checkbox-border-checked: var(--primary-white);
+    --adsk-color-checkbox-icon: var(--primary-charcoal-900);
+    
+    /* Radio Button Colors */
+    --adsk-color-radio-border: var(--adsk-theme-border-subtle);
+    --adsk-color-radio-border-hover: var(--adsk-theme-border-interactive);
+    --adsk-color-radio-border-checked: var(--primary-white);
+    
+    /* Toggle-specific colors */
+    --adsk-color-toggle-thumb-unchecked: var(--adsk-color-border-strong);
+    --adsk-color-toggle-border-unchecked: var(--adsk-color-border-subtle);
+    
+    /* Button-specific borders */
+    --adsk-color-button-outline-border: var(--adsk-color-border-subtle);
+    --adsk-color-button-outline-border-hover: var(--adsk-color-border-default);
+    --adsk-color-button-outline-border-active: var(--adsk-theme-border-strong);
+
+    /* Flat button colors */
+    --adsk-color-button-flat-text: var(--primary-autodeskBlue-400);
+    --adsk-color-button-flat-focus-shadow: var(--adsk-theme-halo-focus);
+
+    /* Slider colors */
+    --adsk-color-slider-track: var(--white-300);
+    --adsk-color-slider-thumb: var(--adsk-theme-border-base);
+    --adsk-color-slider-thumb-shadow: var(--adsk-theme-halo-focus);
+    
+    /* Demo section backgrounds */
+    --adsk-color-demo-section-bg: var(--adsk-color-bg-primary);
+    --adsk-color-component-example-bg: var(--adsk-color-bg-primary);
+    --adsk-color-component-example-border: rgba(220, 220, 220, 0.1);
+
+    /* Consistent theme-aware borders for all demo/component elements */
+    --adsk-color-demo-section-border: rgba(220, 220, 220, 0.1);
+    --adsk-color-card-border: rgba(220, 220, 220, 0.1);
+    --adsk-color-toolbar-border: rgba(220, 220, 220, 0.1);
+    --adsk-color-theme-switcher-border: rgba(220, 220, 220, 0.1);
+
+    /* Dropdown Colors - Using mask-based approach for theme-aware SVGs */
+    --adsk-color-dropdown-chevron: var(--adsk-theme-border-base);
+    --adsk-color-dropdown-chevron-focus: var(--primary-autodeskBlue-400);
+    --adsk-color-dropdown-checkmark-hover: var(--white-300);
+    --adsk-color-dropdown-checkmark-selected: var(--primary-autodeskBlue-500);
+    --adsk-dropdown-chevron-mask: url("data:image/svg+xml,%3Csvg width='10' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.71 3.22a.75.75 0 00-1.06 0L5 5.87 2.35 3.22a.75.75 0 00-1.06 0 .74.74 0 000 1.06l3.36 3.36a.5.5 0 00.7 0l3.36-3.36a.74.74 0 000-1.06z'/%3E%3C/svg%3E");
+    --adsk-dropdown-checkmark-mask: url("data:image/svg+xml,%3Csvg width='10' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.5 7.2L1.3 5 0 6.3 3.5 9.8 10 3.3 8.7 2z'/%3E%3C/svg%3E");
+    --adsk-accordion-chevron-mask: url("data:image/svg+xml,%3Csvg width='10' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.22 1.29a.75.75 0 000 1.06L5.87 5 3.22 7.65a.75.75 0 000 1.06.74.74 0 001.06 0l3.36-3.36a.5.5 0 000-.7L4.28 1.29a.74.74 0 00-1.06 0z'/%3E%3C/svg%3E");
+    --adsk-theme-border-subtle: rgba(220, 220, 220, 0.25); /* Light borders for cards/sections */
+    --adsk-theme-border-interactive: var(--primary-charcoal-200); /* Hover state borders */
+    --adsk-theme-focus-border: var(--primary-autodeskBlue-400); /* Focus state - always blue */
+    
+    /* Halo Colors (4px box-shadows) */
+    --adsk-theme-halo-hover: rgba(220, 220, 220, 0.15);               /* Subtle hover halo - increased for better 4px visibility */
+    --adsk-theme-halo-focus: rgba(220, 220, 220, 0.25);      /* Mouse focus halo - grows but stays theme-colored */
+    --adsk-theme-halo-focus-keyboard: rgba(6, 150, 215, 0.25);  /* Keyboard focus - always blue for accessibility */
+    --adsk-theme-halo-active: rgba(255, 255, 255, 0.25);     /* Active/pressed halo - theme-colored */
+
+    /* Iconography Color */
+    --adsk-icon-widget: var(--primary-charcoal-500); /* UI widgets/icons - neutral charcoal for tech interfaces */
+}
+
+/* Dark Blue Theme */
+.theme-dark-blue {
+    /* ============================================================================ */
+    /* CONSOLIDATED THEME VARIABLES - Dark Blue */
+    /* ============================================================================ */
+    
+    /* Dark Blue Theme Halos */
+    --adsk-halo-hover-color: rgba(127, 150, 185, 0.15);    /* dark blue accent, subtle */
+    --adsk-halo-active-color: rgba(245, 245, 245, 0.25);   /* white, semi-transparent */
+    --adsk-halo-focus-color: rgba(49, 152, 235, 0.25);     /* blue, universal keyboard focus */
+    
+    /* Scrollbar Colors */
+    --adsk-scrollbar-thumb-color: rgba(255, 255, 255, 0.2); /* light scrollbar for dark theme */
+    
+    /* Core Theme Colors */
+    --adsk-theme-border-base: var(--secondary-darkBlue-200);         /* Strong, visible borders - blue accent */
+    --adsk-theme-border-subtle: rgba(188, 211, 238, 0.25);       /* Light borders for cards/sections */
+    --adsk-theme-border-interactive: var(--secondary-darkBlue-200);  /* Hover state borders */
+    --adsk-theme-focus-border: var(--primary-autodeskBlue-400);      /* Focus state - always blue */
+    
+    /* Halo Colors (4px box-shadows) */
+    --adsk-theme-halo-hover: rgba(188, 211, 238, 0.15);       /* Subtle hover halo - increased for better 4px visibility */
+    --adsk-theme-halo-focus: rgba(188, 211, 238, 0.25);      /* Mouse focus halo - grows but stays theme-colored */
+    --adsk-theme-halo-focus-keyboard: rgba(6, 150, 215, 0.25);  /* Keyboard focus - always blue for accessibility */
+    --adsk-theme-halo-active: rgba(255, 255, 255, 0.25);     /* Active/pressed halo - theme-colored */
+
+    /* Text Colors */
+    --adsk-theme-text-primary: var(--grey-100);
+    --adsk-theme-text-secondary: var(--grey-100);
+    --adsk-theme-text-tertiary: var(--secondary-darkBlue-200);
+    
+    /* ============================================================================ */
+    /* BACKGROUND COLORS */
+    /* ============================================================================ */
+    
+    --adsk-color-bg-primary: var(--surface-darkBlue-200);
+    --adsk-color-bg-secondary: var(--surface-darkBlue-200);
+    --adsk-color-bg-tertiary: var(--surface-darkBlue-250);
+    --adsk-color-bg-quaternary: var(--surface-darkBlue-300);
+    --adsk-color-bg-quinary: var(--surface-darkBlue-350);
+    
+    /* Surface level aliases for explicit usage */
+    --adsk-color-bg-modal: var(--surface-darkBlue-100);       /* Bright modal surfaces */
+    --adsk-color-bg-panel: var(--surface-darkBlue-200);       /* Standard tool panels */
+    --adsk-color-bg-container: var(--surface-darkBlue-300);   /* Background areas */
+    
+    /* Body background - Tool-level default */
+    --adsk-color-bg-body: var(--surface-darkBlue-300);
+    
+    /* ============================================================================ */
+    /* PROPAGATED ELEMENT VARIABLES - All inherit from theme variables */
+    /* ============================================================================ */
+    
+    /* Text Colors */
+    --adsk-color-text-primary: var(--adsk-theme-text-primary);
+    --adsk-color-text-secondary: var(--adsk-theme-text-secondary);
+    --adsk-color-text-tertiary: var(--adsk-theme-text-tertiary);
+    
+    /* Border Colors */
+    --adsk-color-border-default: rgba(188, 211, 238, 0.75);
+    --adsk-color-border-subtle: rgba(188, 211, 238, 0.5);
+    --adsk-color-border-strong: var(--adsk-theme-border-base);
+    --adsk-color-border-focus: var(--adsk-theme-focus-border);
+    
+    /* Input Box Border Colors */
+    --adsk-input-border-default: var(--adsk-color-border-subtle);
+    --adsk-input-border-hover: var(--adsk-color-border-strong);
+    --adsk-input-border-hover-shadow: var(--adsk-theme-halo-hover);
+    
+    /* Form control halos */
+    --adsk-form-shadow-subtle: rgba(188, 211, 238, 0.0);   /* Default state - no visible halo */
+    --adsk-form-shadow-hover: var(--adsk-theme-halo-hover);
+    --adsk-form-shadow-active: var(--adsk-theme-halo-active);
+    
+    /* Checkbox styles */
+    --adsk-color-checkbox-bg: var(--white-100);
+    --adsk-color-checkbox-bg-checked: var(--primary-white);
+    --adsk-color-checkbox-border: var(--adsk-theme-border-subtle);
+    --adsk-color-checkbox-border-hover: var(--adsk-theme-border-interactive);
+    --adsk-color-checkbox-border-checked: var(--primary-white);
+    --adsk-color-checkbox-icon: var(--primary-charcoal-900);
+    
+    /* Radio Button Colors */
+    --adsk-color-radio-border: var(--adsk-theme-border-subtle);
+    --adsk-color-radio-border-hover: var(--adsk-theme-border-interactive);
+    --adsk-color-radio-border-checked: var(--primary-white);
+    
+    /* Toggle-specific colors */
+    --adsk-color-toggle-thumb-unchecked: var(--adsk-color-border-strong);
+    --adsk-color-toggle-border-unchecked: var(--adsk-color-border-subtle);
+    
+    /* Button-specific borders */
+    --adsk-color-button-outline-border: var(--adsk-color-border-subtle);
+    --adsk-color-button-outline-border-hover: var(--adsk-color-border-default);
+    --adsk-color-button-outline-border-active: var(--adsk-theme-border-base);
+
+    /* Flat button colors */
+    --adsk-color-button-flat-text: var(--primary-autodeskBlue-400);
+    --adsk-color-button-flat-focus-shadow: var(--adsk-theme-halo-focus);
+
+    /* Slider colors */
+    --adsk-color-slider-track: var(--white-300);
+    --adsk-color-slider-thumb: var(--adsk-theme-border-base);
+    --adsk-color-slider-thumb-shadow: var(--adsk-theme-halo-focus);
+    
+    /* Demo section backgrounds */
+    --adsk-color-demo-section-bg: var(--adsk-color-bg-primary);
+    --adsk-color-component-example-bg: var(--adsk-color-bg-primary);
+    --adsk-color-component-example-border: rgba(188, 211, 238, 0.1);
+
+    /* Consistent theme-aware borders for all demo/component elements */
+    --adsk-color-demo-section-border: rgba(188, 211, 238, 0.1);
+    --adsk-color-card-border: rgba(188, 211, 238, 0.1);
+    --adsk-color-toolbar-border: rgba(188, 211, 238, 0.1);
+    --adsk-color-theme-switcher-border: rgba(188, 211, 238, 0.1);
+
+    /* Dropdown Colors - Using mask-based approach for theme-aware SVGs */
+    --adsk-color-dropdown-chevron: var(--adsk-theme-border-base);
+    --adsk-color-dropdown-chevron-focus: var(--primary-autodeskBlue-400);
+    --adsk-color-dropdown-checkmark-hover: var(--white-300);
+    --adsk-color-dropdown-checkmark-selected: var(--primary-autodeskBlue-500);
+    --adsk-dropdown-chevron-mask: url("data:image/svg+xml,%3Csvg width='10' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.71 3.22a.75.75 0 00-1.06 0L5 5.87 2.35 3.22a.75.75 0 00-1.06 0 .74.74 0 000 1.06l3.36 3.36a.5.5 0 00.7 0l3.36-3.36a.74.74 0 000-1.06z'/%3E%3C/svg%3E");
+    --adsk-dropdown-checkmark-mask: url("data:image/svg+xml,%3Csvg width='10' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.5 7.2L1.3 5 0 6.3 3.5 9.8 10 3.3 8.7 2z'/%3E%3C/svg%3E");
+    --adsk-accordion-chevron-mask: url("data:image/svg+xml,%3Csvg width='10' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.22 1.29a.75.75 0 000 1.06L5.87 5 3.22 7.65a.75.75 0 000 1.06.74.74 0 001.06 0l3.36-3.36a.5.5 0 000-.7L4.28 1.29a.74.74 0 00-1.06 0z'/%3E%3C/svg%3E");
+    --adsk-theme-border-interactive: var(--secondary-darkBlue-200);  /* Hover state borders */
+    --adsk-theme-focus-border: var(--primary-autodeskBlue-400);      /* Focus state - always blue */
+    
+    /* Halo Colors (4px box-shadows) */
+    --adsk-theme-halo-hover: rgba(188, 211, 238, 0.15);       /* Subtle hover halo - increased for better 4px visibility */
+    --adsk-theme-halo-focus: rgba(188, 211, 238, 0.25);      /* Mouse focus halo - grows but stays theme-colored */
+    --adsk-theme-halo-focus-keyboard: rgba(6, 150, 215, 0.25);  /* Keyboard focus - always blue for accessibility */
+    --adsk-theme-halo-active: rgba(255, 255, 255, 0.25);     /* Active/pressed halo - theme-colored */
+
+    /* Iconography Color */
+    --adsk-icon-widget: var(--tertiary-slate-400); /* UI widgets/icons - neutral slate for tech interfaces */
+}
+
+/* Light Gray Theme (Default) */
+.theme-light-gray {
+    /* ============================================================================ */
+    /* CONSOLIDATED THEME VARIABLES - Light Gray */
+    /* ============================================================================ */
+    
+    /* Light Gray Theme Halos */
+    --adsk-halo-hover-color: rgba(69, 85, 96, 0.2);        /* dark charcoal, more visible on light */
+    --adsk-halo-active-color: rgba(36, 36, 36, 0.25);      /* dark gray, semi-transparent */
+    --adsk-halo-focus-color: rgba(49, 152, 235, 0.35);     /* blue, universal keyboard focus, slightly stronger */
+    
+    /* Scrollbar Colors */
+    --adsk-scrollbar-thumb-color: rgba(0, 0, 0, 0.2); /* dark scrollbar for light theme */
+    
+    /* Core Theme Colors */
+    --adsk-theme-border-base: var(--primary-charcoal-600); /* Strong, visible borders - charcoal for dark theme */
+    --adsk-theme-border-subtle: rgba(128, 128, 128, 0.35); /* Light borders for cards/sections */
+    --adsk-theme-border-interactive: var(--primary-charcoal-600); /* Hover state borders */
+    --adsk-theme-focus-border: var(--primary-autodeskBlue-400); /* Focus state - always blue */
+    
+    /* Halo Colors (4px box-shadows) */
+    --adsk-theme-halo-hover: rgba(128, 128, 128, 0.25);               /* Subtle hover halo - increased for better 4px visibility */
+    --adsk-theme-halo-focus: rgba(128, 128, 128, 0.25);      /* Mouse focus halo - grows but stays theme-colored */
+    --adsk-theme-halo-focus-keyboard: rgba(6, 150, 215, 0.35);  /* Keyboard focus - always blue for accessibility */
+    --adsk-theme-halo-active: rgba(0, 0, 0, 0.15);             /* Active/pressed halo - theme-colored */
+
+    /* Text Colors */
+    --adsk-theme-text-primary: var(--primary-charcoal-900);
+    --adsk-theme-text-secondary: var(--primary-charcoal-900);
+    --adsk-theme-text-tertiary: var(--primary-charcoal-700);
+    
+    /* ============================================================================ */
+    /* BACKGROUND COLORS */
+    /* ============================================================================ */
+    
+    --adsk-color-bg-primary: var(--surface-lightGray-200);
+    --adsk-color-bg-secondary: var(--surface-lightGray-200);
+    --adsk-color-bg-tertiary: var(--surface-lightGray-250);
+    --adsk-color-bg-quaternary: var(--surface-lightGray-300);
+    --adsk-color-bg-quinary: var(--surface-lightGray-350);
+    
+    /* Surface level aliases for explicit usage */
+    --adsk-color-bg-modal: var(--surface-lightGray-100);       /* Dark modal surfaces */
+    --adsk-color-bg-panel: var(--surface-lightGray-200);       /* Standard tool panels */
+    --adsk-color-bg-container: var(--surface-lightGray-300);   /* Background areas */
+    
+    /* Body background - Tool-level default */
+    --adsk-color-bg-body: var(--surface-lightGray-300);
+
+    /* ============================================================================ */
+    /* PROPAGATED ELEMENT VARIABLES - All inherit from theme variables */
+    /* ============================================================================ */
+    
+    /* Text Colors */
+    --adsk-color-text-primary: var(--adsk-theme-text-primary);
+    --adsk-color-text-secondary: var(--adsk-theme-text-secondary);
+    --adsk-color-text-tertiary: var(--adsk-theme-text-tertiary);
+    
+    /* Border Colors */
+    --adsk-color-border-default: rgba(128, 128, 128, 0.75);
+    --adsk-color-border-subtle: rgba(128, 128, 128, 0.5);
+    --adsk-color-border-strong: var(--adsk-theme-border-base);
+    --adsk-color-border-focus: var(--adsk-theme-focus-border);
+    
+    /* Input Box Border Colors */
+    --adsk-input-border-default: var(--adsk-color-border-subtle);
+    --adsk-input-border-hover: var(--adsk-color-border-strong);
+    --adsk-input-border-hover-shadow: var(--adsk-theme-halo-hover);
+    
+    /* Form control halos */
+    --adsk-form-shadow-subtle: rgba(128, 128, 128, 0.0);   /* Default state - no visible halo */
+    --adsk-form-shadow-hover: var(--adsk-theme-halo-hover);
+    --adsk-form-shadow-active: var(--adsk-theme-halo-active);
+    
+    /* Checkbox styles */
+    --adsk-color-checkbox-bg: var(--primary-white);
+    --adsk-color-checkbox-bg-checked: var(--adsk-theme-border-base);
+    --adsk-color-checkbox-border: var(--adsk-theme-border-subtle);
+    --adsk-color-checkbox-border-hover: var(--adsk-theme-border-interactive);
+    --adsk-color-checkbox-border-checked: var(--adsk-theme-border-base);
+    --adsk-color-checkbox-icon: var(--primary-white);
+    
+    /* Radio Button Colors */
+    --adsk-color-radio-border: var(--adsk-theme-border-subtle);
+    --adsk-color-radio-border-hover: var(--adsk-theme-border-interactive);
+    --adsk-color-radio-border-checked: var(--adsk-theme-border-base);
+    
+    /* Toggle-specific colors */
+    --adsk-color-toggle-thumb-unchecked: var(--adsk-color-border-strong);
+    --adsk-color-toggle-border-unchecked: var(--adsk-color-border-subtle);
+    
+    /* Button-specific borders */
+    --adsk-color-button-outline-border: var(--adsk-color-border-subtle);
+    --adsk-color-button-outline-border-hover: var(--adsk-color-border-default);
+    --adsk-color-button-outline-border-active: var(--adsk-theme-border-base);
+
+    /* Flat button colors */
+    --adsk-color-button-flat-text: var(--primary-autodeskBlue-400);
+    --adsk-color-button-flat-focus-shadow: var(--adsk-theme-halo-focus);
+
+    /* Slider colors */
+    --adsk-color-slider-track: var(--black-300);
+    --adsk-color-slider-thumb: var(--adsk-theme-border-base);
+    --adsk-color-slider-thumb-shadow: var(--adsk-theme-halo-focus);
+
+    /* Demo section backgrounds */
+    --adsk-color-demo-section-bg: var(--adsk-color-bg-primary);
+    --adsk-color-component-example-bg: var(--adsk-color-bg-primary);
+    --adsk-color-component-example-border: rgba(128, 128, 128, 0.1);
+
+    /* Consistent theme-aware borders for all demo/component elements */
+    --adsk-color-demo-section-border: rgba(128, 128, 128, 0.1);
+    --adsk-color-card-border: rgba(128, 128, 128, 0.1);
+    --adsk-color-toolbar-border: rgba(128, 128, 128, 0.1);
+    --adsk-color-theme-switcher-border: rgba(128, 128, 128, 0.1);
+
+    /* Dropdown Colors - Using mask-based approach for theme-aware SVGs */
+    --adsk-color-dropdown-chevron: var(--adsk-theme-border-base);
+    --adsk-dropdown-chevron-mask: url("data:image/svg+xml,%3Csvg width='10' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.71 3.22a.75.75 0 00-1.06 0L5 5.87 2.35 3.22a.75.75 0 00-1.06 0 .74.74 0 000 1.06l3.36 3.36a.5.5 0 00.7 0l3.36-3.36a.74.74 0 000-1.06z'/%3E%3C/svg%3E");
+    --adsk-color-dropdown-chevron-focus: var(--primary-autodeskBlue-500);
+    --adsk-dropdown-checkmark-mask: url("data:image/svg+xml,%3Csvg width='10' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.5 7.2L1.3 5 0 6.3 3.5 9.8 10 3.3 8.7 2z'/%3E%3C/svg%3E");
+
+    /* Keyboard Focus Colors */
+    --adsk-color-keyboard-focus-border: var(--primary-autodeskBlue-400);
+    --adsk-color-keyboard-focus-shadow: var(--primary-autodeskBlue-400);
+    
+    /* Slider colors */
+    --adsk-color-slider-track: var(--black-300);
+    --adsk-color-slider-thumb: var(--adsk-theme-border-base);
+    --adsk-color-slider-thumb-shadow: var(--adsk-theme-halo-focus);
+
+    /* Iconography Color */
+    --adsk-icon-widget: var(--primary-charcoal-600); /* UI widgets/icons - neutral charcoal for tech interfaces */
+}
+
+/* Surface Level Utility Classes */
+/* These allow explicit control over surface hierarchy for different UI contexts */
+
+/* Modal/Dialog level - Brightest surface (Level 100) */
+.adsk-surface-modal {
+    background: var(--adsk-color-surface-level100) !important;
+}
+
+/* Panel level - Standard tool/add-in surface (Level 200) - Default for most add-ins */
+.adsk-surface-panel {
+    background: var(--adsk-color-surface-level200) !important;
+}
+
+/* Container level - Background behind panels (Level 300) */
+.adsk-surface-container {
+    background: var(--adsk-color-surface-level300) !important;
+}
+
+/* Inset level - Deepest recessed areas (Level 350) */
+.adsk-surface-inset {
+    background: var(--adsk-color-surface-level350) !important;
+}
+
+/* Semantic background classes that adapt to theme */
+.adsk-bg-modal {
+    background: var(--adsk-color-bg-modal);
+}
+
+.adsk-bg-panel {
+    background: var(--adsk-color-bg-panel);
+}
+
+.adsk-bg-container {
+    background: var(--adsk-color-bg-container);
+}
+
+.adsk-bg-primary {
+    background: var(--adsk-color-bg-primary);
+}
+
+/* Fusion 360 specific theme class */
+.adsk-theme-fusion {
+    /* Override with Fusion-specific colors if needed */
+    --adsk-color-accent-secondary: var(--warning); /* Fusion orange */
+    
+    /* CAD-specific semantic colors */
+    --adsk-fusion-solid-color: var(--success);
+    --adsk-fusion-surface-color: var(--adsk-color-primary);
+    --adsk-fusion-wireframe-color: var(--warning);
+    --adsk-fusion-sketch-color: var(--tertiary-purple-600);
+    --adsk-fusion-construction-color: var(--primary-charcoal-600);
+}

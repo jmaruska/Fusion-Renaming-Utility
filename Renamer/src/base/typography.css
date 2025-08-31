@@ -1,0 +1,118 @@
+/* Autodesk Design System - Typography */
+
+/* Base typography */
+body {
+    font-family: var(--adsk-font-family-base);
+    font-size: var(--adsk-font-size-base);
+    font-weight: var(--adsk-font-weight-normal);
+    line-height: var(--adsk-line-height-base);
+    color: var(--adsk-color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+h1 { 
+    font-size: var(--adsk-font-size-3xl); 
+    font-weight: var(--adsk-font-weight-semibold);
+    line-height: var(--adsk-line-height-tight);
+}
+
+h2 { 
+    font-size: var(--adsk-font-size-2xl); 
+    font-weight: var(--adsk-font-weight-semibold);
+    line-height: var(--adsk-line-height-tight);
+}
+
+h3 { 
+    font-size: var(--adsk-font-size-xl); 
+    font-weight: var(--adsk-font-weight-semibold);
+    line-height: var(--adsk-line-height-tight);
+}
+
+h4 { 
+    font-size: var(--adsk-font-size-lg); 
+    font-weight: var(--adsk-font-weight-medium);
+    line-height: var(--adsk-line-height-base);
+}
+
+h5 { 
+    font-size: var(--adsk-font-size-base); 
+    font-weight: var(--adsk-font-weight-medium);
+    line-height: var(--adsk-line-height-base);
+}
+
+h6 { 
+    font-size: var(--adsk-font-size-sm); 
+    font-weight: var(--adsk-font-weight-medium);
+    line-height: var(--adsk-line-height-base);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Typography utilities */
+.adsk-text-xs { font-size: var(--adsk-font-size-xs); }
+.adsk-text-sm { font-size: var(--adsk-font-size-sm); }
+.adsk-text-base { font-size: var(--adsk-font-size-base); }
+.adsk-text-lg { font-size: var(--adsk-font-size-lg); }
+.adsk-text-xl { font-size: var(--adsk-font-size-xl); }
+.adsk-text-2xl { font-size: var(--adsk-font-size-2xl); }
+.adsk-text-3xl { font-size: var(--adsk-font-size-3xl); }
+
+.adsk-text-normal { font-weight: var(--adsk-font-weight-normal); }
+.adsk-text-medium { font-weight: var(--adsk-font-weight-medium); }
+.adsk-text-semibold { font-weight: var(--adsk-font-weight-semibold); }
+.adsk-text-bold { font-weight: var(--adsk-font-weight-bold); }
+
+.adsk-text-primary { color: var(--adsk-color-text-primary); }
+.adsk-text-secondary { color: var(--adsk-color-text-secondary); }
+.adsk-text-tertiary { color: var(--adsk-color-text-tertiary); }
+.adsk-text-disabled { color: var(--adsk-color-text-disabled); }
+.adsk-text-inverse { color: var(--adsk-color-text-inverse); }
+.adsk-text-link { color: var(--adsk-color-text-link); }
+
+.adsk-text-error { color: var(--adsk-color-status-error); }
+.adsk-text-success { color: var(--adsk-color-status-success); }
+.adsk-text-warning { color: var(--adsk-color-status-warning); }
+.adsk-text-info { color: var(--adsk-color-status-info); }
+
+.adsk-text-mono { font-family: var(--adsk-font-family-monospace); }
+
+.adsk-text-center { text-align: center; }
+.adsk-text-left { text-align: left; }
+.adsk-text-right { text-align: right; }
+
+.adsk-text-uppercase { text-transform: uppercase; }
+.adsk-text-lowercase { text-transform: lowercase; }
+.adsk-text-capitalize { text-transform: capitalize; }
+
+.adsk-text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Code blocks */
+code {
+    font-family: var(--adsk-font-family-monospace);
+    font-size: 0.875em;
+    background-color: var(--adsk-color-bg-disabled);
+    padding: 2px 4px;
+    border-radius: var(--adsk-border-radius-small);
+    color: var(--adsk-color-text-primary);
+}
+
+pre {
+    font-family: var(--adsk-font-family-monospace);
+    background-color: var(--adsk-color-bg-disabled);
+    padding: var(--adsk-space-md);
+    border-radius: var(--adsk-border-radius-medium);
+    overflow-x: auto;
+    line-height: var(--adsk-line-height-relaxed);
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+}

@@ -1,0 +1,115 @@
+/* =================================================================== */
+/* AUTODESK WEAVE UI - TABS COMPONENT */
+/* =================================================================== */
+
+.adsk-tabs {
+    display: flex;
+    flex-direction: column;
+}
+
+.adsk-tabs-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid var(--adsk-color-border-subtle, #e5e5e5);
+    position: relative;
+}
+
+.adsk-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 16px 8px 0;
+    position: relative;
+    font-family: var(--adsk-font-family-display, "Artifakt Element", Arial, sans-serif);
+    font-size: 14px;
+    line-height: 1.0;
+    color: var(--adsk-color-text-primary, #333333);
+    transition: all 0.15s ease;
+}
+
+.adsk-tab:last-child {
+    margin-right: 0;
+}
+
+.adsk-tab-label {
+    font-weight: 300; /* Normal weight for unselected */
+    margin-bottom: 8px;
+}
+
+.adsk-tab-indicator {
+    width: calc(100% - 16px); /* Subtract right padding to align with text */
+    height: 4px;
+    background: transparent;
+    position: absolute;
+    bottom: -1px; /* Position above the border line */
+    left: 0;
+    transition: background-color 0.15s ease;
+}
+
+/* Selected state - using aria-selected="true" instead of CSS class */
+.adsk-tab[aria-selected="true"] .adsk-tab-label {
+    font-weight: 700; /* Bold for selected */
+}
+
+.adsk-tab[aria-selected="true"] .adsk-tab-indicator {
+    background-color: var(--primary-autodeskBlue-500, #0696d7);
+}
+
+/* Hover state - show border-strong color indicator */
+.adsk-tab:hover:not([aria-selected="true"]) .adsk-tab-indicator {
+    background-color: var(--adsk-color-border-strong, #757575);
+}
+
+/* Focus state */
+.adsk-tab:focus-visible {
+    box-shadow: 0 0 0 4px var(--adsk-theme-halo-focus-keyboard);
+    outline: none;
+}
+
+/* Tab content */
+.adsk-tab-content {
+    padding: 16px 0 0 0; /* Top padding only */
+}
+
+/* High density adjustments */
+body.density-high .adsk-tab {
+    padding: 0 12px 6px 0;
+    font-size: 12px;
+}
+
+body.density-high .adsk-tab-label {
+    margin-bottom: 6px;
+}
+
+body.density-high .adsk-tab-indicator {
+    width: calc(100% - 12px); /* Subtract high density right padding */
+}
+
+body.density-high .adsk-tab-content {
+    padding: 12px 0 0 0;
+}
+
+/* Medium density adjustments */
+body.density-medium .adsk-tab {
+    padding: 0 20px 10px 0;
+    font-size: 14px;
+}
+
+body.density-medium .adsk-tab-label {
+    margin-bottom: 10px;
+}
+
+body.density-medium .adsk-tab-indicator {
+    width: calc(100% - 20px); /* Subtract medium density right padding */
+}
+
+body.density-medium .adsk-tab-content {
+    padding: 20px 0 0 0;
+}
+
+/* Theme support - handled by CSS custom properties */

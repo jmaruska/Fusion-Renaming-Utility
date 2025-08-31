@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renamer</title>
+    <!-- Import modular CSS files in proper order -->
+    <!-- Core System (Required) -->
+    <link rel="stylesheet" href="src/base/reset.css">
+    <link rel="stylesheet" href="src/base/variables.css">
+    <link rel="stylesheet" href="src/themes/weave-ui-themes.css">
+    <link rel="stylesheet" href="src/base/fonts.css">
+    <link rel="stylesheet" href="src/base/typography.css">
+    
+    <!-- Components -->
+    <link rel="stylesheet" href="src/components/buttons.css">
+    <link rel="stylesheet" href="src/components/accordions.css">
+    <!-- <link rel="stylesheet" href="src/components/tabs.css"> --> <!-- Not used in Renamer -->
+    <!-- <link rel="stylesheet" href="src/components/dropdowns.css"> --> <!-- Not used in Renamer -->
+    <link rel="stylesheet" href="src/components/forms.css">
+    <link rel="stylesheet" href="src/components/panels.css">
+    <!-- <link rel="stylesheet" href="src/components/toolbars.css"> --> <!-- Not used in Renamer -->
+    <!-- <link rel="stylesheet" href="src/components/progress.css"> --> <!-- Not used in Renamer -->
+    <link rel="stylesheet" href="src/components/scrollbars.css">
+    <link rel="stylesheet" href="src/components/icons-ui-base.css">
+    <link rel="stylesheet" href="src/components/icons-ui-widgets.css">
+    <!-- <link rel="stylesheet" href="src/components/icons-responsive.css"> --> <!-- Not used in Renamer -->
+    
+    <!-- Layout System -->
+    <link rel="stylesheet" href="src/layouts/grid.css">
+    <!-- <link rel="stylesheet" href="src/layouts/palettes.css"> --> <!-- Not used in Renamer -->
+    <link rel="stylesheet" href="src/layouts/spacing.css">
+    <link rel="stylesheet" href="src/layouts/weave-ui-layout.css">
+
+    <style>
+        /* Add spacing between all accordion items */
+        .adsk-panel--addin .adsk-accordion-item {
+            margin-bottom: var(--adsk-space-sm);
+        }
+        
+        /* Remove margin from the last accordion item */
+        .adsk-panel--addin .adsk-accordion-item:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body class="theme-dark-blue density-high adsk-container--surface">
+    <div class="adsk-container adsk-container--fluid">
+        <div class="adsk-panel--addin">
+            <!-- FIND AND REPLACE COMPONENTS -->
+            <div class="adsk-accordion">
+                <div class="adsk-accordion-item">
+                    <div class="adsk-accordion-header">
+                        <button class="adsk-accordion-button" type="button" data-target="#findReplace" data-open>
+                            <span class="adsk-accordion-icon adsk-icon icon-caret-right-m"></span>
+                            <span class="adsk-accordion-title">Find and Replace</span>
+                        </button>
+                    </div>
+                    <div id="findReplace" class="adsk-accordion-content adsk-focus-container">
+                    <div class="adsk-form-group">
+                        <label for="findString" class="adsk-label">Find</label>
+                        <div class="adsk-input-box">
+                            <input type="text" id="findString" class="adsk-input-field" tabindex="1">
+                        </div>
+                    </div>                    
+                    <div class="adsk-form-group">
+                        <label for="replaceString" class="adsk-label">Replace</label>
+                        <div class="adsk-input-box">
+                            <input type="text" id="replaceString" class="adsk-input-field" tabindex="2">
+                        </div>
+                    </div>
+                    
+                    <div class="adsk-form-group">
+                        <div class="adsk-label">Scope</div>
+                        <div class="adsk-row adsk-row--xl">
+                            <div class="adsk-radio">
+                                <input type="radio" name="renameMode" value="All" checked tabindex="3" id="renameMode_all">
+                                <div class="adsk-radio-mark"></div>
+                                <label for="renameMode_all">All</label>
+                            </div>
+                            <div class="adsk-radio">
+                                <input type="radio" name="renameMode" value="Hierarchy" tabindex="4" id="renameMode_hierarchy">
+                                <div class="adsk-radio-mark"></div>
+                                <label for="renameMode_hierarchy">Hierarchy</label>
+                            </div>
+                            <div class="adsk-radio">
+                                <input type="radio" name="renameMode" value="Selected" tabindex="5" id="renameMode_selected">
+                                <div class="adsk-radio-mark"></div>
+                                <label for="renameMode_selected">Selected</label>
+                            </div>
+                        </div>
+                    </div>                
+                    <div class="adsk-form-group">
+                        <div class="adsk-flex adsk-flex--justify-end adsk-allow-halos">
+                            <button id="renameButton" disabled title="Rename components based on the find and replace strings" tabindex="6" class="adsk-btn adsk-btn--outline adsk-btn--edge-extend">Rename</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- Prefix and Suffix Accordion -->
+                <div class="adsk-accordion-item">
+                    <div class="adsk-accordion-header">
+                        <button class="adsk-accordion-button" type="button" data-target="#prefixSuffix">
+                            <span class="adsk-accordion-icon adsk-icon icon-caret-right-m"></span>
+                            <span class="adsk-accordion-title">Prefix and Suffix</span>
+                        </button>
+                    </div>
+                    <div id="prefixSuffix" class="adsk-accordion-content adsk-focus-container">
+                    <div class="adsk-form-group">
+                        <label for="prefixString" class="adsk-label">Prefix</label>
+                        <div class="adsk-input-group">
+                            <div class="adsk-input-box">
+                                <input type="text" id="prefixString" class="adsk-input-field" placeholder="Prefix" tabindex="7">
+                            </div>
+                            <button id="addPrefixButton" disabled title="Add prefix to component names" tabindex="8" class="adsk-btn adsk-btn--outline">Add</button>
+                        </div>
+                    </div>
+                    
+                    <div class="adsk-form-group">
+                        <label for="suffixString" class="adsk-label">Suffix</label>
+                        <div class="adsk-input-group">
+                            <div class="adsk-input-box">
+                                <input type="text" id="suffixString" class="adsk-input-field" placeholder="Suffix" tabindex="9">
+                            </div>
+                            <button id="addSuffixButton" disabled title="Add suffix to component names" tabindex="10" class="adsk-btn adsk-btn--outline">Add</button>
+                        </div>
+                    </div>
+                    <div class="adsk-form-group">
+                        <div class="adsk-grid adsk-grid--2-col adsk-gap-sm">
+                            <button id="assembliesButton" title="Add 'asm' suffix to assemblies" tabindex="11" class="adsk-btn adsk-btn--outline">Assemblies</button>
+                            <button id="partsButton" title="Add 'prt' suffix to parts" tabindex="12" class="adsk-btn adsk-btn--outline">Parts</button>
+                        </div>
+                    </div>
+                    
+                    <div class="adsk-form-group">
+                        <div class="adsk-label">Scope</div>
+                        <div class="adsk-row adsk-row--xl">
+                            <div class="adsk-radio">
+                                <input type="radio" name="prefixSuffixMode" value="All" checked tabindex="13" id="prefixSuffixMode_all">
+                                <div class="adsk-radio-mark"></div>
+                                <label for="prefixSuffixMode_all">All</label>
+                            </div>
+                            <div class="adsk-radio">
+                                <input type="radio" name="prefixSuffixMode" value="Hierarchy" tabindex="14" id="prefixSuffixMode_hierarchy">
+                                <div class="adsk-radio-mark"></div>
+                                <label for="prefixSuffixMode_hierarchy">Hierarchy</label>
+                            </div>
+                            <div class="adsk-radio">
+                                <input type="radio" name="prefixSuffixMode" value="Selected" tabindex="15" id="prefixSuffixMode_selected">
+                                <div class="adsk-radio-mark"></div>
+                                <label for="prefixSuffixMode_selected">Selected</label>
+                            </div>
+                        </div>
+                    </div> 
+                    </div>
+                </div>
+                <!-- Component Numbering Accordion -->
+                <div class="adsk-accordion-item">
+                    <div class="adsk-accordion-header">
+                        <button class="adsk-accordion-button" type="button" data-target="#componentNumbering">
+                            <span class="adsk-accordion-icon adsk-icon icon-caret-right-m"></span>
+                            <span class="adsk-accordion-title">Component Numbering</span>
+                        </button>
+                    </div>
+                    <div id="componentNumbering" class="adsk-accordion-content adsk-focus-container">
+                    <div class="adsk-form-group">
+                        <label for="numberingFindString" class="adsk-label">Hash to Number</label>
+                        <div class="adsk-input-box">
+                            <input type="text" id="numberingFindString" class="adsk-input-field" placeholder="####" tabindex="16">
+                        </div>
+                    </div>
+                    
+                    <div class="adsk-row--sm" style="align-items: flex-end;">
+                        <div class="adsk-form-group" style="flex: 1;">
+                            <label for="zeroPadding" class="adsk-label">Zero Padding</label>
+                            <div class="adsk-input-box">
+                                <input type="number" id="zeroPadding" class="adsk-input-field" min="1" value="1" tabindex="17">
+                            </div>
+                        </div>
+                        <div class="adsk-form-group" style="flex: 1;">
+                            <label for="startingNumber" class="adsk-label">Starting Number</label>
+                            <div class="adsk-input-box">
+                                <input type="number" id="startingNumber" class="adsk-input-field" value="1" tabindex="18">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="adsk-form-group">
+                        <label for="byCount" class="adsk-label">By Count</label>
+                        <div class="adsk-input-box">
+                            <input type="number" id="byCount" class="adsk-input-field" value="1" tabindex="19">
+                        </div>
+                    </div>
+                    
+                    <div class="adsk-form-group">
+                        <div class="adsk-label">Scope</div>
+                        <div class="adsk-row adsk-row--xl">
+                            <div class="adsk-radio">
+                                <input type="radio" name="numberingMode" value="All" checked tabindex="20" id="numberingMode_all">
+                                <div class="adsk-radio-mark"></div>
+                                <label for="numberingMode_all">All</label>
+                            </div>
+                            <div class="adsk-radio">
+                                <input type="radio" name="numberingMode" value="Hierarchy" tabindex="21" id="numberingMode_hierarchy">
+                                <div class="adsk-radio-mark"></div>
+                                <label for="numberingMode_hierarchy">Hierarchy</label>
+                            </div>
+                            <div class="adsk-radio">
+                                <input type="radio" name="numberingMode" value="Selected" tabindex="22" id="numberingMode_selected">
+                                <div class="adsk-radio-mark"></div>
+                                <label for="numberingMode_selected">Selected</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="adsk-form-group adsk-allow-halos">
+                        <button id="numberingButton" title="Use a generic hash to apply numbering to components" disabled tabindex="23" class="adsk-btn adsk-btn--solid adsk-btn--full-width adsk-btn--edge-extend">Apply Numbering</button>
+                    </div>
+                    </div>
+                </div>
+                <!-- Unique Body Names Accordion -->
+                <div class="adsk-accordion-item">
+                    <div class="adsk-accordion-header">
+                        <button class="adsk-accordion-button" type="button" data-target="#uniqueBodyNames">
+                            <span class="adsk-accordion-icon adsk-icon icon-caret-right-m"></span>
+                            <span class="adsk-accordion-title">Unique Body Names</span>
+                        </button>
+                    </div>
+                    <div id="uniqueBodyNames" class="adsk-accordion-content adsk-focus-container">
+                        <div class="adsk-form-group adsk-allow-halos">
+                            <button id="uniqueBodyNamesButton" title="Give unique names to all bodies" tabindex="24" class="adsk-btn adsk-btn--solid adsk-btn--full-width adsk-btn--edge-extend">Rename Bodies</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/js/weave-ui-controller.js"></script>
+    <script>
+        const findStringInput = document.getElementById('findString');
+        const renameButton = document.getElementById('renameButton');
+        const prefixStringInput = document.getElementById('prefixString');
+        const addPrefixButton = document.getElementById('addPrefixButton');
+        const suffixStringInput = document.getElementById('suffixString');
+        const addSuffixButton = document.getElementById('addSuffixButton');
+        const assembliesButton = document.getElementById('assembliesButton');
+        const partsButton = document.getElementById('partsButton');
+        const numberingFindStringInput = document.getElementById('numberingFindString');
+        const zeroPaddingInput = document.getElementById('zeroPadding');
+        const startingNumberInput = document.getElementById('startingNumber');
+        const byCountInput = document.getElementById('byCount');
+        const numberingButton = document.getElementById('numberingButton');
+        const uniqueBodyNamesButton = document.getElementById('uniqueBodyNamesButton');
+
+        // Enable the button when the findString input has text
+        findStringInput.addEventListener('input', () => {
+            renameButton.disabled = findStringInput.value.trim() === '';
+        });
+
+        // Enable the addPrefixButton when the prefixString input has text
+        prefixStringInput.addEventListener('input', () => {
+            addPrefixButton.disabled = prefixStringInput.value.trim() === '';
+        });
+
+        // Enable the addSuffixButton when the suffixString input has text
+        suffixStringInput.addEventListener('input', () => {
+            addSuffixButton.disabled = suffixStringInput.value.trim() === '';
+        });
+
+        // Enable the numberingButton when the numberingFindString input has text
+        numberingFindStringInput.addEventListener('input', () => {
+            numberingButton.disabled = numberingFindStringInput.value.trim() === '';
+        });
+
+        renameButton.addEventListener('click', () => {
+            const findString = document.getElementById('findString').value;
+            const replaceString = document.getElementById('replaceString').value;
+            const renameMode = document.querySelector('input[name="renameMode"]:checked').value;
+            adsk.fusionSendData('rename', JSON.stringify({ findString, replaceString, renameMode }));
+        });
+
+        addPrefixButton.addEventListener('click', () => {
+            const prefixString = document.getElementById('prefixString').value;
+            const prefixSuffixMode = document.querySelector('input[name="prefixSuffixMode"]:checked').value;
+            adsk.fusionSendData('addPrefix', JSON.stringify({ prefixString, prefixSuffixMode }));
+        });
+
+        addSuffixButton.addEventListener('click', () => {
+            const suffixString = document.getElementById('suffixString').value;
+            const prefixSuffixMode = document.querySelector('input[name="prefixSuffixMode"]:checked').value;
+            adsk.fusionSendData('addSuffix', JSON.stringify({ suffixString, prefixSuffixMode }));
+        });
+
+        assembliesButton.addEventListener('click', () => {
+            adsk.fusionSendData('addAssembliesSuffix', JSON.stringify({}));
+        });
+
+        partsButton.addEventListener('click', () => {
+            adsk.fusionSendData('addPartsSuffix', JSON.stringify({}));
+        });
+
+        numberingButton.addEventListener('click', () => {
+            const numberingFindString = document.getElementById('numberingFindString').value;
+            const zeroPadding = parseInt(document.getElementById('zeroPadding').value, 10);
+            const startingNumber = parseInt(document.getElementById('startingNumber').value, 10);
+            const byCount = parseInt(document.getElementById('byCount').value, 10);
+            const numberingMode = document.querySelector('input[name="numberingMode"]:checked').value;
+            adsk.fusionSendData('applyNumbering', JSON.stringify({ numberingFindString, zeroPadding, startingNumber, byCount, numberingMode }));
+        });
+
+        uniqueBodyNamesButton.addEventListener('click', () => {
+            adsk.fusionSendData('uniqueBodyNames', JSON.stringify({}));
+        });
+    </script>
+</body>
+</html>

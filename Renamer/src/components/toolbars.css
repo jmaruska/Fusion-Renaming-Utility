@@ -1,0 +1,333 @@
+/* Autodesk Design System - Toolbars */
+
+/* Base toolbar styles */
+.adsk-toolbar {
+    display: flex;
+    align-items: center;
+    gap: var(--adsk-space-md);
+    padding: 0 var(--adsk-space-md);
+    height: var(--adsk-toolbar-height);
+    background-color: var(--adsk-color-bg-container);
+    border-bottom: 1px solid var(--adsk-color-toolbar-border);
+    margin-bottom: 20px;
+}
+
+/* Toolbar sections */
+.adsk-toolbar-section {
+    display: flex;
+    align-items: center;
+    gap: var(--adsk-space-sm);
+}
+
+.adsk-toolbar-section:first-child {
+    flex: 1;
+}
+
+.adsk-toolbar-section--center {
+    justify-content: center;
+}
+
+.adsk-toolbar-section--end {
+    justify-content: flex-end;
+}
+
+/* Toolbar variants */
+.adsk-toolbar--compact {
+    height: 32px;
+    padding: 0 var(--adsk-space-sm);
+}
+
+.adsk-toolbar--large {
+    height: 48px;
+    padding: 0 var(--adsk-space-lg);
+}
+
+.adsk-toolbar--borderless {
+    border-bottom: none;
+}
+
+.adsk-toolbar--dark {
+    background-color: var(--adsk-color-text-primary);
+    color: var(--adsk-color-text-inverse);
+    border-bottom-color: var(--adsk-color-border-strong);
+}
+
+/* Toolbar title */
+.adsk-toolbar-title {
+    font-size: var(--adsk-font-size-lg);
+    font-weight: var(--adsk-font-weight-semibold);
+    color: var(--adsk-color-text-primary);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.adsk-toolbar--dark .adsk-toolbar-title {
+    color: var(--adsk-color-text-inverse);
+}
+
+/* Toolbar separator */
+.adsk-toolbar-separator {
+    width: 1px;
+    height: 24px;
+    background-color: var(--adsk-color-border-default);
+    margin: 0 var(--adsk-space-xs);
+    flex-shrink: 0;
+}
+
+.adsk-toolbar--dark .adsk-toolbar-separator {
+    background-color: var(--adsk-color-border-strong);
+}
+
+/* Toolbar button group */
+.adsk-toolbar-btn-group {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 2px;
+    background-color: var(--adsk-color-bg-disabled);
+    border-radius: var(--adsk-border-radius-medium);
+}
+
+/* Toolbar buttons */
+.adsk-toolbar .adsk-btn {
+    height: 28px;
+}
+
+.adsk-toolbar .adsk-btn--icon {
+    width: 28px;
+}
+
+/* Segmented control navigation in toolbar (previously called tabs) */
+.adsk-segmented-control {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background-color: var(--adsk-color-bg-disabled);
+    padding: 2px;
+    border-radius: var(--adsk-border-radius-medium);
+}
+
+.adsk-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--adsk-space-md);
+    height: 28px;
+    background-color: transparent;
+    color: var(--adsk-color-text-secondary);
+    border: none;
+    border-radius: var(--adsk-border-radius-small);
+    font-family: var(--adsk-font-family-base);
+    font-size: var(--adsk-font-size-sm);
+    font-weight: var(--adsk-font-weight-medium);
+    cursor: pointer;
+    transition: all var(--adsk-transition-fast);
+    white-space: nowrap;
+    user-select: none;
+}
+
+.adsk-segment:hover {
+    background-color: var(--adsk-color-bg-surface);
+    color: var(--adsk-color-text-primary);
+}
+
+.adsk-segment--active {
+    background-color: var(--adsk-color-bg-surface);
+    color: var(--adsk-color-text-primary);
+    box-shadow: var(--adsk-shadow-sm);
+}
+
+.adsk-segment--active:hover {
+    background-color: var(--adsk-color-bg-surface);
+}
+
+/* Breadcrumb navigation */
+.adsk-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--adsk-space-xs);
+    font-size: var(--adsk-font-size-sm);
+}
+
+.adsk-breadcrumb-item {
+    color: var(--adsk-color-text-secondary);
+    text-decoration: none;
+    transition: color var(--adsk-transition-fast);
+}
+
+.adsk-breadcrumb-item:hover {
+    color: var(--adsk-color-text-primary);
+}
+
+.adsk-breadcrumb-item--current {
+    color: var(--adsk-color-text-primary);
+    font-weight: var(--adsk-font-weight-medium);
+}
+
+.adsk-breadcrumb-separator {
+    color: var(--adsk-color-text-tertiary);
+    user-select: none;
+}
+
+/* Status bar (bottom toolbar) */
+.adsk-status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--adsk-space-md);
+    height: 24px;
+    background-color: var(--adsk-color-bg-disabled);
+    border-top: 1px solid var(--adsk-color-border-default);
+    font-size: var(--adsk-font-size-xs);
+    color: var(--adsk-color-text-secondary);
+}
+
+.adsk-status-item {
+    display: flex;
+    align-items: center;
+    gap: var(--adsk-space-xs);
+}
+
+.adsk-status-item--clickable {
+    cursor: pointer;
+    padding: 0 var(--adsk-space-xs);
+    border-radius: var(--adsk-border-radius-small);
+    transition: all var(--adsk-transition-fast);
+}
+
+.adsk-status-item--clickable:hover {
+    background-color: var(--adsk-color-bg-surface);
+    color: var(--adsk-color-text-primary);
+}
+
+/* Toolbar search */
+.adsk-toolbar-search {
+    position: relative;
+    max-width: 240px;
+}
+
+.adsk-toolbar-search .adsk-input {
+    height: 28px;
+    font-size: var(--adsk-font-size-sm);
+    padding-left: 32px;
+    background-color: var(--adsk-color-bg-disabled);
+    border-color: transparent;
+}
+
+.adsk-toolbar-search .adsk-input:focus {
+    background-color: var(--adsk-color-bg-surface);
+    border-color: var(--adsk-color-border-focus);
+}
+
+.adsk-toolbar-search::before {
+    content: '🔍';
+    position: absolute;
+    left: var(--adsk-space-sm);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--adsk-color-text-tertiary);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Responsive toolbar */
+@media (max-width: 768px) {
+    .adsk-toolbar {
+        padding: 0 var(--adsk-space-sm);
+        gap: var(--adsk-space-sm);
+    }
+    
+    .adsk-toolbar-section {
+        gap: var(--adsk-space-xs);
+    }
+    
+    .adsk-toolbar-title {
+        font-size: var(--adsk-font-size-base);
+    }
+    
+    .adsk-toolbar-search {
+        max-width: 160px;
+    }
+    
+    .adsk-breadcrumb {
+        display: none;
+    }
+}
+
+/* Toolbar with overflow menu */
+.adsk-toolbar-overflow {
+    position: relative;
+}
+
+.adsk-toolbar-overflow-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: var(--adsk-space-xs);
+    min-width: 180px;
+}
+
+/* Tool palette (vertical toolbar) */
+.adsk-tool-palette {
+    display: flex;
+    flex-direction: column;
+    padding: var(--adsk-space-sm);
+    background-color: var(--adsk-color-bg-surface);
+    border-right: 1px solid var(--adsk-color-border-default);
+    gap: var(--adsk-space-xs);
+}
+
+.adsk-tool-palette .adsk-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    justify-content: center;
+}
+
+.adsk-tool-palette-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: var(--adsk-space-xs) 0;
+    border-bottom: 1px solid var(--adsk-color-border-subtle);
+}
+
+.adsk-tool-palette-group:last-child {
+    border-bottom: none;
+}
+
+/* =================================================================== */
+/* DENSITY OVERRIDES - Medium Density */
+/* =================================================================== */
+
+body.density-medium .adsk-toolbar {
+    height: 48px;
+    padding: 0 16px;
+    gap: 16px;
+}
+
+body.density-medium .adsk-toolbar-section {
+    gap: 12px;
+}
+
+body.density-medium .adsk-toolbar h1 {
+    font-size: 18px;
+}
+
+body.density-medium .adsk-segment {
+    height: 32px;
+    padding: 0 var(--adsk-space-lg);
+    font-size: var(--adsk-font-size-base);
+}
+
+body.density-medium .adsk-breadcrumb-item {
+    font-size: 14px;
+    padding: 8px;
+}
+
+body.density-medium .adsk-tool-palette .adsk-btn {
+    width: 40px;
+    height: 40px;
+}

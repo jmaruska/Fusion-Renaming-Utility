@@ -1,0 +1,368 @@
+/* Autodesk Design System - CSS Custom Properties (Variables) */
+/* Based on official Autodesk Weave design system and HIG */
+
+/* Official Autodesk Typography - Artifakt Element for Display, Open Sans for UI */
+
+/* Google Fonts - Open Sans for UI */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+/* Official Autodesk Artifakt Element Font Loading - For Display/Branding */
+@font-face {
+  font-family: 'Artifakt Element';
+  src: url('https://swc.autodesk.com/pharmacopeia/fonts/ArtifaktElement/v1.0/WOFF2/Artifakt%20Element%20Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Artifakt Element';
+  src: url('https://swc.autodesk.com/pharmacopeia/fonts/ArtifaktElement/v1.0/WOFF2/Artifakt%20Element%20Semi%20Bold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Artifakt Element';
+  src: url('https://swc.autodesk.com/pharmacopeia/fonts/ArtifaktElement/v1.0/WOFF2/Artifakt%20Element%20Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Artifakt Element';
+  src: url('https://swc.autodesk.com/pharmacopeia/fonts/ArtifaktElement/v1.0/WOFF2/Artifakt%20Element%20Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* Overlay Utility Colors */
+  --black-100:   #0000000d;  /* 6% alpha */
+  --black-200:   #0000001a;  /* 10% alpha */
+  --black-300:   #00000033;  /* 20% alpha */
+  --black-400:   #0000004d;  /* 30% alpha */
+  --black-500:   #00000080;  /* 50% alpha */
+  --black-600:   #000000cc;  /* 80% alpha */
+  --black-700:   #000000d9;  /* 85% alpha */
+  --black-800:   #000000e5;  /* 90% alpha */
+  --black-900:   #000000f2;  /* 95% alpha */
+  --black-1000:  #000000;    /* 100% alpha */
+
+  --grey-100:    #f5f5f5;    /* 96% */
+  --grey-200:    #e6e6e6;    /* 90% */
+  --grey-300:    #d9d9d9;    /* 85% */
+  --grey-400:    #b3b3b3;    /* 70% */
+  --grey-500:    #757575;    /* 46% */
+  --grey-600:    #444444;    /* 27% */
+  --grey-700:    #383838;    /* 22% */
+  --grey-800:    #2c2c2c;    /* 17% */
+  --grey-900:    #1e1e1e;    /* 12% */
+  --grey-1000:   #111111;    /* 7% */
+
+  --white-100:   #ffffff0d;  /* 6% alpha */
+  --white-200:   #ffffff1a;  /* 10% alpha */
+  --white-300:   #ffffff33;  /* 20% alpha */
+  --white-400:   #ffffff66;  /* 40% alpha */
+  --white-500:   #ffffffb2;  /* 70% alpha */
+  --white-600:   #ffffffcc;  /* 80% alpha */
+  --white-700:   #ffffffd9;  /* 85% alpha */
+  --white-800:   #ffffffe5;  /* 90% alpha */
+  --white-900:   #fffffff2;  /* 95% alpha */
+  --white-1000:  #ffffff;    /* 100% alpha */
+
+  /* Autodesk HIG Palette */
+
+  /* Primary */
+  --primary-black: #000000;
+  --primary-white: #ffffff;
+  --primary-autodeskBlue-100: #cdeaf7;
+  --primary-autodeskBlue-200: #9bd5ef;
+  --primary-autodeskBlue-300: #6ac0e7;
+  --primary-autodeskBlue-400: #38abdf;
+  --primary-autodeskBlue-500: #0696d7;
+  --primary-autodeskBlue-600: #007fc6;
+  --primary-autodeskBlue-700: #006eaf;
+  --primary-autodeskBlue-800: #074b78;
+  --primary-autodeskBlue-900: #0a324d;
+  --primary-charcoal-100: #eeeeee;
+  --primary-charcoal-200: #dcdcdc;
+  --primary-charcoal-300: #cccccc;
+  --primary-charcoal-400: #bbbbbb;
+  --primary-charcoal-500: #999999;
+  --primary-charcoal-600: #808080;
+  --primary-charcoal-700: #666666;
+  --primary-charcoal-800: #4d4d4d;
+  --primary-charcoal-900: #3c3c3c;
+  /* Secondary */
+  --secondary-darkBlue-100: #e1ebf7;
+  --secondary-darkBlue-200: #bcd3ee;
+  --secondary-darkBlue-300: #8babdc;
+  --secondary-darkBlue-400: #5f8bcb;
+  --secondary-darkBlue-500: #3970b9;
+  --secondary-darkBlue-600: #1858a8;
+  --secondary-darkBlue-700: #064285;
+  --secondary-darkBlue-800: #003163;
+  --secondary-darkBlue-900: #0c2c54;
+  --secondary-green-100: #e7f2d9;
+  --secondary-green-200: #cfe4b3;
+  --secondary-green-300: #b7d78c;
+  --secondary-green-400: #9fc966;
+  --secondary-green-500: #87b340;
+  --secondary-green-600: #6a9728;
+  --secondary-green-700: #507b16;
+  --secondary-green-800: #385e08;
+  --secondary-green-900: #234200;
+  --secondary-red-100: #faeded;
+  --secondary-red-200: #f7d6d6;
+  --secondary-red-300: #f9b4b4;
+  --secondary-red-400: #f48686;
+  --secondary-red-500: #eb5555;
+  --secondary-red-600: #dd2222;
+  --secondary-red-700: #af1b1b;
+  --secondary-red-800: #800f0f;
+  --secondary-red-900: #520404;
+  --secondary-turquoise-100: #d6f2ef;
+  --secondary-turquoise-200: #ade4de;
+  --secondary-turquoise-300: #84d7ce;
+  --secondary-turquoise-400: #5bc9bd;
+  --secondary-turquoise-500: #32bcad;
+  --secondary-turquoise-600: #23a597;
+  --secondary-turquoise-700: #168576;
+  --secondary-turquoise-800: #0c665b;
+  --secondary-turquoise-900: #04403d;
+  --secondary-yellowOrange-100: #feecd1;
+  --secondary-yellowOrange-200: #fddaa4;
+  --secondary-yellowOrange-300: #fcc776;
+  --secondary-yellowOrange-400: #fbb549;
+  --secondary-yellowOrange-500: #faa21b;
+  --secondary-yellowOrange-600: #ed8d16;
+  --secondary-yellowOrange-700: #d9730b;
+  --secondary-yellowOrange-800: #bf5808;
+  --secondary-yellowOrange-900: #8c3401;
+
+  /* Tertiary */
+  --tertiary-pink-100: #ffebf5;
+  --tertiary-pink-200: #ffd6eb;
+  --tertiary-pink-300: #ffb8db;
+  --tertiary-pink-400: #ff8cc6;
+  --tertiary-pink-500: #fc56a9;
+  --tertiary-pink-600: #e84396;
+  --tertiary-pink-700: #c72877;
+  --tertiary-pink-800: #991f5c;
+  --tertiary-pink-900: #781848;
+  --tertiary-purple-100: #f4edfd;
+  --tertiary-purple-200: #eadcfd;
+  --tertiary-purple-300: #d5bcf7;
+  --tertiary-purple-400: #c5a1f8;
+  --tertiary-purple-500: #b385f2;
+  --tertiary-purple-600: #a76ef5;
+  --tertiary-purple-700: #8558c5;
+  --tertiary-purple-800: #5f3e8e;
+  --tertiary-purple-900: #482f6b;
+  --tertiary-salmon-100: #ffefec;
+  --tertiary-salmon-200: #fcded9;
+  --tertiary-salmon-300: #ffbeb3;
+  --tertiary-salmon-400: #ff9582;
+  --tertiary-salmon-500: #f26a52;
+  --tertiary-salmon-600: #db5942;
+  --tertiary-salmon-700: #a84a39;
+  --tertiary-salmon-800: #853729;
+  --tertiary-salmon-900: #66251a;
+  --tertiary-slate-100: #e9f0f7;
+  --tertiary-slate-200: #dce7f3;
+  --tertiary-slate-300: #c1cedc;
+  --tertiary-slate-400: #a7bacf;
+  --tertiary-slate-500: #7993b0;
+  --tertiary-slate-600: #6784a6;
+  --tertiary-slate-700: #4b6b8f;
+  --tertiary-slate-800: #354d67;
+  --tertiary-slate-900: #2c3e53;
+
+  /* Surface Colors - Universal Constants (Same across all themes per Weave spec) */
+  /* These map to colorScheme.surface.levelXXX and remain constant across themes */
+  /* 
+   * Surface Level Hierarchy (based on Fusion 360 analysis):
+   * Level 100: Brightest - Modal dialogs, preferences panels (#ffffff / #434f63)
+   * Level 200: Standard - Main tool panels, add-in content (#f5f5f5 / #394454) 
+   * Level 300: Background - Behind panels, toolbar backgrounds (#d9d9d9 / #202934)
+   * Level 350: Deepest - Recessed areas, insets (#cccccc / deeper)
+   * 
+   * For add-ins: Default to 200/300 range (tool-level) rather than 100/200 (modal-level)
+   */
+  --surface-level100: #ffffff;    /* colorScheme.surface.level100 - basics.colors.surface.lightGray.100 */
+  --surface-level200: #f5f5f5;    /* colorScheme.surface.level200 - basics.colors.surface.lightGray.200 */
+  --surface-level250: #eeeeee;    /* colorScheme.surface.level250 - basics.colors.surface.lightGray.250 */
+  --surface-level300: #d9d9d9;    /* colorScheme.surface.level300 - basics.colors.surface.lightGray.300 */
+  --surface-level350: #cccccc;    /* colorScheme.surface.level350 - basics.colors.surface.lightGray.350 */
+  
+  /* Legacy surface colors for compatibility - will be deprecated */
+  --surface-lightGray-100: var(--surface-level100);
+  --surface-lightGray-200: var(--surface-level200);
+  --surface-lightGray-250: var(--surface-level250);
+  --surface-lightGray-300: var(--surface-level300);
+  --surface-lightGray-350: var(--surface-level350);
+  /* Dark theme surface overrides will be handled via semantic color mappings in themes */
+  --surface-darkGray-100: #535353;
+  --surface-darkGray-200: #474747;
+  --surface-darkGray-250: #373737;
+  --surface-darkGray-300: #2a2a2a;
+  --surface-darkGray-350: #202020;
+
+  --surface-darkBlue-100: #454f61;
+  --surface-darkBlue-200: #3b4453;
+  --surface-darkBlue-250: #2e3440;
+  --surface-darkBlue-300: #222933;
+  --surface-darkBlue-350: #1a1f25;
+
+  /* Status */
+  --success: #87b340;
+  --warning: #faa21b;
+  --error: #ec4a41;
+
+  /* Typography */
+  
+  /* Component example backgrounds (for cards/panels) */
+  --adsk-color-component-example-bg: var(--surface-lightGray-200); /* Same as demo sections */
+  
+  /* Status Colors */
+  --adsk-color-status-error: var(--secondary-red-600);
+  --adsk-color-status-error-bg: var(--secondary-red-100);
+  --adsk-color-status-success: var(--success);
+  --adsk-color-status-success-bg: var(--secondary-green-100);
+  --adsk-color-status-warning: var(--warning);
+  --adsk-color-status-warning-bg: var(--secondary-yellowOrange-100);
+  --adsk-color-status-info: var(--adsk-color-primary);
+  --adsk-color-status-info-bg: var(--primary-autodeskBlue-100);
+
+  /* Spacing - High Density (Default for CAD applications) */
+  --adsk-space-none: 0;
+  --adsk-space-xxs: 2px; /* highExtraExtraSmall */
+  --adsk-space-xs: 4px;  /* highExtraSmall */
+  --adsk-space-sm: 8px;  /* highSmall */
+  --adsk-space-md: 12px; /* highMedium */
+  --adsk-space-lg: 16px; /* highLarge */
+  --adsk-space-xl: 24px; /* highExtraLarge */
+  --adsk-space-2xl: 32px; /* highExtraExtraLarge */
+  --adsk-space-3xl: 48px;
+  
+  /* Spacing - Medium Density (Alternative for less dense UIs) */
+  --adsk-space-medium-xxs: 4px;
+  --adsk-space-medium-xs: 8px;
+  --adsk-space-medium-sm: 12px;
+  --adsk-space-medium-md: 16px;
+  --adsk-space-medium-lg: 24px;
+  --adsk-space-medium-xl: 32px;
+  --adsk-space-medium-2xl: 48px;
+  
+  /* Border Radius */
+  --adsk-border-radius-none: 0;
+  --adsk-border-radius-extra-small: 2px;
+  --adsk-border-radius-small: 4px;
+  --adsk-border-radius-medium: 6px;
+  --adsk-border-radius-large: 8px;
+  --adsk-border-radius-pill: 9999px;
+  
+  /* Typography - Autodesk Typography Hierarchy */
+  /* UI Text (Default) - Open Sans for body text, buttons, forms, UI elements */
+  --adsk-font-family-base: "Open Sans", Arial, sans-serif;
+  /* Display/Branding - Artifakt Element for headings, titles, branding */
+  --adsk-font-family-display: "Artifakt Element", Arial, sans-serif;
+  /* Monospace - For code, technical content */
+  --adsk-font-family-monospace: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  
+  --adsk-font-size-xs: 11px;  /* highSmall */
+  --adsk-font-size-sm: 12px;  /* highMedium */
+  --adsk-font-size-base: 12px; /* highMedium - CAD apps use smaller base */
+  --adsk-font-size-lg: 16px;  /* highLarge */
+  --adsk-font-size-xl: 20px;  /* highExtraLarge */
+  --adsk-font-size-2xl: 24px; /* highExtraExtraLarge */
+  --adsk-font-size-3xl: 28px;
+  
+  /* Typography - Medium Density (Alternative) */
+  --adsk-font-size-medium-xs: 12px;
+  --adsk-font-size-medium-sm: 14px;
+  --adsk-font-size-medium-base: 14px;
+  --adsk-font-size-medium-lg: 20px;
+  --adsk-font-size-medium-xl: 24px;
+  --adsk-font-size-medium-2xl: 28px;
+  
+  --adsk-font-weight-normal: 400;
+  --adsk-font-weight-medium: 500;
+  --adsk-font-weight-semibold: 600;
+  --adsk-font-weight-bold: 700;
+  
+  --adsk-line-height-tight: 1.2;
+  --adsk-line-height-base: 1.4;
+  --adsk-line-height-relaxed: 1.6;
+  
+  /* Shadows */
+  --adsk-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --adsk-shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --adsk-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --adsk-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --adsk-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Z-index */
+  --adsk-z-dropdown: 1055;
+  --adsk-z-sticky: 1020;
+  --adsk-z-fixed: 1030;
+  --adsk-z-modal-backdrop: 1040;
+  --adsk-z-modal: 1050;
+  --adsk-z-popover: 1060;
+  --adsk-z-tooltip: 1070;
+  
+  /* Transitions */
+    /* Animation timing */
+  --adsk-transition-fast: 0.3s ease-out;
+  --adsk-transition-base: 0.2s ease-out;
+  --adsk-transition-slow: 0.3s ease-out;
+  
+  /* Component specific - Aligned with Weave density system */
+  /* HIGH DENSITY (Default) - CAD-optimized compact interface */
+  --adsk-button-height-sm: 20px;  /* High density small */
+  --adsk-button-height-base: 24px; /* High density base */
+  --adsk-button-height-lg: 28px;  /* High density large */
+  
+  --adsk-input-height-sm: 24px;
+  --adsk-input-height-base: 28px;
+  --adsk-input-height-lg: 32px;
+  
+  --adsk-checkbox-size: 12px;  /* High density - smaller */
+  --adsk-radio-size: 12px;     /* High density - smaller */
+  --adsk-radio-inset-size: 2px; /* High density radio button inset shadow */
+  --adsk-toggle-width: 26px;   /* High density toggle width */
+  --adsk-toggle-height: 15px;  /* High density toggle height */
+  --adsk-toggle-thumb-size: 9px; /* High density toggle thumb */
+  --adsk-toggle-throw: 10px;   /* High density toggle throw distance */
+  --adsk-slider-thumb-width: 4px;  /* High density range slider thumb */
+  --adsk-slider-thumb-height: 16px; /* High density range slider thumb */
+  
+  /* MEDIUM DENSITY overrides - Applied via body.density-medium */
+  --adsk-button-height-medium-sm: 24px;  /* Medium density small */
+  --adsk-button-height-medium-base: 32px; /* Medium density base */
+  --adsk-button-height-medium-lg: 40px;  /* Medium density large */
+  
+  --adsk-input-height-medium-sm: 32px;
+  --adsk-input-height-medium-base: 36px;
+  --adsk-input-height-medium-lg: 40px;
+  
+  --adsk-checkbox-size-medium: 16px;  /* Medium density checkboxes */
+  --adsk-radio-size-medium: 16px;     /* Medium density radio buttons */
+  --adsk-radio-inset-size-medium: 3px; /* Medium density radio button inset shadow */
+  --adsk-toggle-width-medium: 37px;   /* Medium density toggle width - adjusted for 1px border on each side */
+  --adsk-toggle-height-medium: 20px;  /* Medium density toggle height - adjusted for 1px border on top/bottom */
+  --adsk-toggle-thumb-size-medium: 12px; /* Medium density toggle thumb */
+  --adsk-toggle-throw-medium: 17px; /* Medium density toggle throw distance */
+  --adsk-slider-thumb-width-medium: 6px;  /* Medium density range slider thumb */
+  --adsk-slider-thumb-height-medium: 16px; /* Medium density range slider thumb */
+  
+  /* Layout components */
+  --adsk-toolbar-height: 32px; /* Compact for CAD */
+  --adsk-toolbar-height-medium: 40px; /* Medium density toolbar */
+  --adsk-panel-width: 280px;
+  --adsk-sidebar-width: 240px;
+}

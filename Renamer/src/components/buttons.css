@@ -1,0 +1,428 @@
+/* Autodesk Design System - Buttons */
+/* Based on official Fusion 360 button specifications */
+/* Clean, simple architecture like checkbox - each button type is self-contained */
+
+/* Base button shared styles - High Density (CAD Default) */
+.adsk-btn {
+    display: inline-block;
+    padding: 2px 8px;
+    height: var(--adsk-button-height-base, 24px);
+    border: 1px solid transparent;
+    border-radius: 2px;
+    font-family: var(--adsk-font-family-ui); /* Open Sans for UI text */
+    font-size: 12px;
+    font-weight: 600; /* Semi Bold */
+    line-height: 14px;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    box-sizing: border-box;
+    /* Specific transitions - exclude color to prevent icon color transitions */
+    transition: background-color var(--adsk-transition-fast), 
+                border-color var(--adsk-transition-fast), 
+                box-shadow var(--adsk-transition-fast);
+    /* Default subtle box-shadow */
+    box-shadow: var(--adsk-form-shadow-subtle) 0px 0px 0px 1.0px;
+}
+
+.adsk-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* Focus state - consistent across all button types */
+.adsk-btn:focus-visible {
+    outline: none;
+    border-color: var(--primary-autodeskBlue-500);
+    box-shadow: var(--adsk-theme-halo-focus-keyboard, rgba(6, 150, 215, 0.35)) 0px 0px 0px 4px;
+}
+
+/* =================================================================== */
+/* SOLID BUTTON - Complete self-contained implementation */
+/* =================================================================== */
+.adsk-btn--solid {
+    background-color: var(--primary-autodeskBlue-500);
+    color: var(--primary-white);
+    border-color: transparent;
+}
+
+.adsk-btn--solid:hover:not(:disabled) {
+    background-color: var(--primary-autodeskBlue-500);
+    box-shadow: var(--adsk-form-shadow-hover) 0px 0px 0px 2px;
+}
+
+.adsk-btn--solid:active:not(:disabled) {
+    background-color: var(--primary-autodeskBlue-500);
+    box-shadow: var(--adsk-form-shadow-active) 0px 0px 0px 4px;
+}
+
+/* =================================================================== */
+/* OUTLINE BUTTON - Complete self-contained implementation */
+/* =================================================================== */
+.adsk-btn--outline {
+    background-color: transparent;
+    color: var(--adsk-color-text-primary);
+    border-color: var(--adsk-color-button-outline-border);
+}
+
+.adsk-btn--outline:hover:not(:disabled) {
+    background-color: transparent;
+    border-color: var(--adsk-color-button-outline-border-hover);
+    box-shadow: var(--adsk-form-shadow-hover) 0px 0px 0px 2px;
+}
+
+.adsk-btn--outline:active:not(:disabled) {
+    background-color: transparent;
+    border-color: var(--adsk-color-button-outline-border-active);
+    box-shadow: var(--adsk-form-shadow-active) 0px 0px 0px 4px;
+}
+
+/* =================================================================== */
+/* FLAT BUTTON - Complete self-contained implementation */
+/* =================================================================== */
+.adsk-btn--flat {
+    background-color: transparent;
+    color: var(--adsk-color-button-flat-text);
+    border-color: transparent;
+    box-shadow: var(--adsk-form-shadow-muted) 0px 0px 0px 2px;
+}
+
+.adsk-btn--flat:hover:not(:disabled) {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: var(--adsk-form-shadow-hover) 0px 0px 0px 2px;
+}
+
+.adsk-btn--flat:active:not(:disabled) {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: var(--adsk-form-shadow-active) 0px 0px 0px 4px;
+}
+
+/* =================================================================== */
+/* ICON BUTTON - Complete self-contained implementation */
+/* =================================================================== */
+.adsk-btn--icon {
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    background-color: transparent;
+    color: var(--adsk-color-text-secondary);
+    border-color: transparent;
+}
+
+.adsk-btn--icon:hover:not(:disabled) {
+    background-color: var(--adsk-color-bg-tertiary);
+    box-shadow: var(--adsk-form-shadow-hover) 0px 0px 0px 2px;
+}
+
+.adsk-btn--icon:active:not(:disabled) {
+    background-color: var(--adsk-color-bg-quaternary);
+    box-shadow: var(--adsk-form-shadow-active) 0px 0px 0px 4px;
+}
+
+/* Icon-only button type combinations - preserve button type styling */
+.adsk-btn--solid.adsk-btn--icon {
+    background-color: var(--primary-autodeskBlue-500);
+    color: var(--primary-white);
+    border-color: transparent;
+}
+
+.adsk-btn--solid.adsk-btn--icon:hover:not(:disabled) {
+    background-color: var(--primary-autodeskBlue-500);
+    box-shadow: var(--adsk-form-shadow-hover) 0px 0px 0px 2px;
+}
+
+.adsk-btn--solid.adsk-btn--icon:active:not(:disabled) {
+    background-color: var(--primary-autodeskBlue-500);
+    box-shadow: var(--adsk-form-shadow-active) 0px 0px 0px 4px;
+}
+
+.adsk-btn--outline.adsk-btn--icon {
+    background-color: transparent;
+    color: var(--adsk-color-text-primary);
+    border-color: var(--adsk-color-button-outline-border);
+}
+
+.adsk-btn--outline.adsk-btn--icon:hover:not(:disabled) {
+    background-color: transparent;
+    border-color: var(--adsk-color-button-outline-border-hover);
+    box-shadow: var(--adsk-form-shadow-hover) 0px 0px 0px 2px;
+}
+
+.adsk-btn--outline.adsk-btn--icon:active:not(:disabled) {
+    background-color: transparent;
+    border-color: var(--adsk-color-button-outline-border-active);
+    box-shadow: var(--adsk-form-shadow-active) 0px 0px 0px 4px;
+}
+
+.adsk-btn--flat.adsk-btn--icon {
+    background-color: transparent;
+    color: var(--adsk-color-button-flat-text);
+    border-color: transparent;
+    box-shadow: var(--adsk-form-shadow-muted) 0px 0px 0px 2px;
+}
+
+.adsk-btn--flat.adsk-btn--icon:hover:not(:disabled) {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: var(--adsk-form-shadow-hover) 0px 0px 0px 2px;
+}
+
+.adsk-btn--flat.adsk-btn--icon:active:not(:disabled) {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: var(--adsk-form-shadow-active) 0px 0px 0px 4px;
+}
+
+/* =================================================================== */
+/* DANGER BUTTON VARIANTS - Theme-responsive like checkbox */
+/* =================================================================== */
+.adsk-btn--danger.adsk-btn--solid {
+    background-color: var(--secondary-red-600);
+    color: var(--primary-white);
+    border-color: transparent;
+}
+
+.adsk-btn--danger.adsk-btn--solid:hover:not(:disabled) {
+    background-color: var(--secondary-red-700);
+    box-shadow: var(--adsk-form-shadow-error-hover) 0px 0px 0px 2px;
+}
+
+.adsk-btn--danger.adsk-btn--solid:active:not(:disabled) {
+    background-color: var(--secondary-red-800);
+    box-shadow: var(--adsk-form-shadow-error-active) 0px 0px 0px 4px;
+}
+
+.adsk-btn--danger.adsk-btn--outline {
+    background-color: transparent;
+    color: var(--secondary-red-600);
+    border-color: var(--adsk-form-shadow-error-border);
+}
+
+.adsk-btn--danger.adsk-btn--outline:hover:not(:disabled) {
+    background-color: var(--secondary-red-100);
+    border-color: var(--adsk-form-shadow-error-border-hover);
+    box-shadow: var(--adsk-form-shadow-error-hover) 0px 0px 0px 2px;
+}
+
+.adsk-btn--danger.adsk-btn--outline:active:not(:disabled) {
+    background-color: var(--secondary-red-100);
+    border-color: var(--secondary-red-600);
+    box-shadow: var(--adsk-form-shadow-error-active) 0px 0px 0px 4px;
+}
+
+.adsk-btn--danger.adsk-btn--flat {
+    background-color: transparent;
+    color: var(--secondary-red-600);
+    border-color: transparent;
+}
+
+.adsk-btn--danger.adsk-btn--flat:hover:not(:disabled) {
+    background-color: var(--secondary-red-100);
+    border-color: var(--adsk-form-shadow-error-border-subtle);
+    box-shadow: var(--adsk-form-shadow-error-hover) 0px 0px 0px 2px;
+}
+
+.adsk-btn--danger.adsk-btn--flat:active:not(:disabled) {
+    background-color: var(--secondary-red-100);
+    border-color: transparent;
+    box-shadow: var(--adsk-form-shadow-error-active) 0px 0px 0px 4px;
+}
+
+/* =================================================================== */
+/* DENSITY OVERRIDES - High Density (CAD) */
+/* =================================================================== */
+body.density-high .adsk-btn {
+    padding: 2px 8px;
+    height: var(--adsk-button-height-base, 24px);
+    font-size: 12px;
+    line-height: 14px;
+    min-width: 48px;
+}
+
+body.density-high .adsk-btn--icon {
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+}
+
+body.density-high .adsk-btn--small {
+    padding: 1px 6px;
+    height: var(--adsk-button-height-sm, 20px);
+    font-size: 11px;
+    line-height: 12px;
+    min-width: 36px;
+}
+
+body.density-high .adsk-btn--large {
+    padding: 3px 12px;
+    height: var(--adsk-button-height-lg, 28px);
+    font-size: 13px;
+    line-height: 16px;
+    min-width: 64px;
+}
+
+/* =================================================================== */
+/* DENSITY OVERRIDES - Medium Density */
+/* =================================================================== */
+body.density-medium .adsk-btn {
+    padding: 8px 16px;
+    height: var(--adsk-button-height-medium-base, 32px);
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.density-medium .adsk-btn--icon {
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.density-medium .adsk-btn--small {
+    padding: 6px 12px;
+    height: var(--adsk-button-height-medium-sm, 24px);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.density-medium .adsk-btn--large {
+    padding: 12px 20px;
+    height: var(--adsk-button-height-medium-lg, 40px);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =================================================================== */
+/* BUTTON MODIFIERS */
+/* =================================================================== */
+.adsk-btn--full-width {
+    width: 100%;
+}
+
+.adsk-btn--auto-width {
+    width: auto;
+}
+
+/* Toggle button state */
+.adsk-btn--toggle.adsk-btn--active {
+    background-color: var(--primary-autodeskBlue-500);
+    color: var(--primary-white);
+    border-color: transparent;
+}
+
+.adsk-btn--toggle.adsk-btn--active:hover:not(:disabled) {
+    background-color: var(--primary-autodeskBlue-600);
+    box-shadow: var(--adsk-form-shadow-hover) 0px 0px 0px 2px;
+}
+
+.adsk-btn--toggle.adsk-btn--active:active:not(:disabled) {
+    background-color: var(--primary-autodeskBlue-700);
+    box-shadow: var(--adsk-form-shadow-active) 0px 0px 0px 4px;
+}
+
+/* =================================================================== */
+/* BUTTON GROUPS */
+/* =================================================================== */
+.adsk-btn-group {
+    display: inline-flex;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.adsk-btn-group .adsk-btn {
+    border-radius: 0;
+    border-right-width: 0;
+}
+
+.adsk-btn-group .adsk-btn:first-child {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+.adsk-btn-group .adsk-btn:last-child {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-right-width: 1px;
+}
+
+.adsk-btn-group .adsk-btn:not(:first-child):not(:last-child) {
+    border-radius: 0;
+}
+
+/* =================================================================== */
+/* BUTTON ICONS AND LOADING */
+/* =================================================================== */
+.adsk-btn .adsk-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+
+/* Button icons inherit button text color - use !important to override theme specificity */
+.adsk-btn .adsk-icon {
+    color: inherit !important;
+}
+
+/* Medium density icons in buttons */
+body.density-medium .adsk-btn .adsk-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Icon + text spacing - increased spacing for better readability */
+.adsk-btn .adsk-icon {
+    margin-right: 8px;
+}
+
+/* Icon-only buttons - ensure square and centered, no extra spacing */
+.adsk-btn--icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: auto !important; /* Remove min-width that prevents square */
+}
+
+.adsk-btn--icon .adsk-icon {
+    margin: 0 !important; /* Remove all margins for icon-only buttons */
+}
+
+/* Loading state */
+.adsk-btn--loading {
+    pointer-events: none;
+    position: relative;
+}
+
+.adsk-btn--loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: adsk-btn-spin 0.8s linear infinite;
+}
+
+@keyframes adsk-btn-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

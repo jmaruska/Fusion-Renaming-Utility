@@ -1,0 +1,289 @@
+/* Autodesk Design System - Progress Components */
+/* Following Weave UI naming conventions: progress-bar and progress-ring */
+
+/* Progress container for centering */
+.adsk-progress-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--adsk-space-md);
+}
+
+/* Progress Ring - Gem variant (HIG Gem Spinner) */
+.adsk-progress-ring--gem {
+    width: 72px;
+    height: 72px;
+}
+
+.adsk-progress-ring-outline {
+    fill: rgba(128, 128, 128, 0.1); /* Transparent background */
+    stroke: none; /* No border on the background outline */
+}
+
+.adsk-progress-ring-segment {
+    opacity: 0;
+    animation: adsk-gem-wave 1s linear infinite;
+}
+
+/* Even-odd pattern: darker blue for odd segments (outer), lighter blue for even segments (inner) */
+.adsk-progress-ring-segment[data-segment="1"],
+.adsk-progress-ring-segment[data-segment="3"],
+.adsk-progress-ring-segment[data-segment="5"],
+.adsk-progress-ring-segment[data-segment="7"],
+.adsk-progress-ring-segment[data-segment="9"],
+.adsk-progress-ring-segment[data-segment="11"],
+.adsk-progress-ring-segment[data-segment="13"],
+.adsk-progress-ring-segment[data-segment="15"],
+.adsk-progress-ring-segment[data-segment="17"],
+.adsk-progress-ring-segment[data-segment="19"] {
+    fill: var(--primary-autodeskBlue-600) /* Darker blue for odd segments (outer facets) */
+}
+
+.adsk-progress-ring-segment[data-segment="2"],
+.adsk-progress-ring-segment[data-segment="4"],
+.adsk-progress-ring-segment[data-segment="6"],
+.adsk-progress-ring-segment[data-segment="8"],
+.adsk-progress-ring-segment[data-segment="10"],
+.adsk-progress-ring-segment[data-segment="12"],
+.adsk-progress-ring-segment[data-segment="14"],
+.adsk-progress-ring-segment[data-segment="16"],
+.adsk-progress-ring-segment[data-segment="18"],
+.adsk-progress-ring-segment[data-segment="20"] {
+    fill: var(--primary-autodeskBlue-400); /* Lighter blue for even segments (inner facets) */
+}
+
+/* Progress state modifier - pauses animation and shows completion */
+.adsk-progress-ring--complete .adsk-progress-ring-segment {
+    animation-play-state: paused;
+    opacity: 1 !important;
+}
+
+/* Progress state modifier - shows specific percentage */
+.adsk-progress-ring--progress .adsk-progress-ring-segment {
+    animation-play-state: paused;
+    opacity: 0;
+}
+
+/* Individual segment opacity control for progress states */
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="1"] { opacity: var(--progress-segment-1, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="2"] { opacity: var(--progress-segment-2, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="3"] { opacity: var(--progress-segment-3, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="4"] { opacity: var(--progress-segment-4, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="5"] { opacity: var(--progress-segment-5, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="6"] { opacity: var(--progress-segment-6, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="7"] { opacity: var(--progress-segment-7, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="8"] { opacity: var(--progress-segment-8, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="9"] { opacity: var(--progress-segment-9, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="10"] { opacity: var(--progress-segment-10, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="11"] { opacity: var(--progress-segment-11, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="12"] { opacity: var(--progress-segment-12, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="13"] { opacity: var(--progress-segment-13, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="14"] { opacity: var(--progress-segment-14, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="15"] { opacity: var(--progress-segment-15, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="16"] { opacity: var(--progress-segment-16, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="17"] { opacity: var(--progress-segment-17, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="18"] { opacity: var(--progress-segment-18, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="19"] { opacity: var(--progress-segment-19, 0); }
+.adsk-progress-ring--progress .adsk-progress-ring-segment[data-segment="20"] { opacity: var(--progress-segment-20, 0); }
+
+/* Autodesk HIG gem progress ring with continuous wave animation - REVERSED direction */
+.adsk-progress-ring-segment[data-segment="1"] { animation-delay: 0.95s; }
+.adsk-progress-ring-segment[data-segment="2"] { animation-delay: 0.9s; }
+.adsk-progress-ring-segment[data-segment="3"] { animation-delay: 0.85s; }
+.adsk-progress-ring-segment[data-segment="4"] { animation-delay: 0.8s; }
+.adsk-progress-ring-segment[data-segment="5"] { animation-delay: 0.75s; }
+.adsk-progress-ring-segment[data-segment="6"] { animation-delay: 0.7s; }
+.adsk-progress-ring-segment[data-segment="7"] { animation-delay: 0.65s; }
+.adsk-progress-ring-segment[data-segment="8"] { animation-delay: 0.6s; }
+.adsk-progress-ring-segment[data-segment="9"] { animation-delay: 0.55s; }
+.adsk-progress-ring-segment[data-segment="10"] { animation-delay: 0.5s; }
+.adsk-progress-ring-segment[data-segment="11"] { animation-delay: 0.45s; }
+.adsk-progress-ring-segment[data-segment="12"] { animation-delay: 0.4s; }
+.adsk-progress-ring-segment[data-segment="13"] { animation-delay: 0.35s; }
+.adsk-progress-ring-segment[data-segment="14"] { animation-delay: 0.3s; }
+.adsk-progress-ring-segment[data-segment="15"] { animation-delay: 0.25s; }
+.adsk-progress-ring-segment[data-segment="16"] { animation-delay: 0.2s; }
+.adsk-progress-ring-segment[data-segment="17"] { animation-delay: 0.15s; }
+.adsk-progress-ring-segment[data-segment="18"] { animation-delay: 0.1s; }
+.adsk-progress-ring-segment[data-segment="19"] { animation-delay: 0.05s; }
+.adsk-progress-ring-segment[data-segment="20"] { animation-delay: 0s; }
+
+@keyframes adsk-gem-wave {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    20% { opacity: 1; }
+    30% { opacity: 0.8; }
+    40% { opacity: 0.4; }
+    50% { opacity: 0.1; }
+    60% { opacity: 0; }
+    70% { opacity: 0; }
+    80% { opacity: 0; }
+    90% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* Simple Progress Ring - Clean circular gradient spinner with comet tail effect */
+.adsk-progress-ring-simple {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+    /* Static background ring border */
+    border: 3px solid rgba(128, 128, 128, 0.1);
+    box-sizing: border-box;
+}
+
+.adsk-progress-ring-simple::before {
+    content: '';
+    position: absolute;
+    top: -3px; /* Offset for border */
+    left: -3px; /* Offset for border */
+    width: calc(100% + 6px); /* Account for border width */
+    height: calc(100% + 6px); /* Account for border width */
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        transparent 220deg,
+        rgba(2, 127, 198, 0.1) 240deg,
+        rgba(2, 127, 198, 0.2) 260deg,
+        rgba(2, 127, 198, 0.4) 280deg,
+        rgba(2, 127, 198, 0.6) 300deg,
+        rgba(2, 127, 198, 0.8) 320deg,
+        var(--primary-autodeskBlue-500) 340deg,
+        var(--primary-autodeskBlue-500) 360deg
+    );
+    mask: radial-gradient(circle at center, transparent 11.75px, black 13px);
+    -webkit-mask: radial-gradient(circle at center, transparent 11.75px, black 13px);
+    animation: adsk-simple-spin 1s linear infinite;
+}
+
+@keyframes adsk-simple-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Progress Bar Styles */
+.adsk-progress-bar {
+    width: 100%;
+    height: 4px;
+    background-color: rgba(128, 128, 128, 0.1); /* Light background */
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Determinate Progress Bar - value driven (0-100%) */
+.adsk-progress-bar--determinate .adsk-progress-bar--fill {
+    height: 100%;
+    background-color: var(--primary-autodeskBlue-500);
+    border-radius: 2px;
+    width: 0%; /* Default to 0, driven by JavaScript or inline styles */
+    /* No transition for instant reset capability */
+}
+
+/* Indeterminate Progress Bar - continuous animation */
+.adsk-progress-bar--indeterminate {
+    background: rgba(128, 128, 128, 0.1); /* Light background */
+    position: relative;
+    --sweep-duration: 2s; /* Default duration, can be overridden */
+}
+
+.adsk-progress-bar--indeterminate::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -203px; /* Start 200px to the left */
+    width: 203px; /* Fixed width instead of 100% */
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--primary-autodeskBlue-500) 95%,
+        var(--primary-autodeskBlue-500) 100%
+    );
+    transform: skewX(-20deg); /* Italicize the gradient sweep */
+    animation: adsk-progress-sweep var(--sweep-duration) linear infinite;
+}
+
+@keyframes adsk-progress-sweep {
+    0% {
+        left: -405px; /* Start completely off-screen to the left */
+    }
+    100% {
+        left: 100%; /* End completely off-screen to the right */
+    }
+}
+
+@keyframes adsk-progress-pulse {
+    0%, 100% { width: 20%; }
+    50% { width: 80%; }
+}
+
+/* Progress Ring - Circle variant (SVG stroke animation approach) */
+.adsk-progress-ring--circle {
+    width: 32px;
+    height: 32px;
+    transform: rotate(-90deg); /* Start from top */
+}
+
+.adsk-progress-ring-circle-track {
+    fill: none;
+    stroke: var(--adsk-color-border-subtle);
+    stroke-width: 3;
+}
+
+.adsk-progress-ring-circle-progress {
+    fill: none;
+    stroke: var(--adsk-color-accent-primary);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 75.4; /* Circumference of circle with radius 12 */
+    stroke-dashoffset: 75.4;
+    animation: adsk-circle-progress 1.5s ease-in-out infinite;
+}
+
+@keyframes adsk-circle-progress {
+    0% {
+        stroke-dashoffset: 75.4; /* Full circumference */
+    }
+    50% {
+        stroke-dashoffset: 18.85; /* ~75% of circumference */
+    }
+    100% {
+        stroke-dashoffset: 75.4; /* Back to full */
+        transform: rotate(360deg);
+    }
+}
+
+/* Progress Bar Components */
+.adsk-progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(128, 128, 128, 0.1); /* Light background */
+    border-radius: var(--adsk-border-radius-extra-small);
+    overflow: hidden;
+}
+
+.adsk-progress-bar-fill {
+    height: 100%;
+    background: var(--primary-autodeskBlue-500);
+    border-radius: var(--adsk-border-radius-extra-small);
+    transition: width 0.3s ease;
+}
+
+/* Animated Progress Bar */
+.adsk-progress-bar-fill--animated {
+    animation: adsk-progress-pulse 2s ease-in-out infinite;
+}
+
+@keyframes adsk-progress-pulse {
+    0%, 100% { width: 20%; }
+    50% { width: 80%; }
+}
+
+@keyframes adsk-progress-pulse {
+    0%, 100% { width: 20%; }
+    50% { width: 80%; }
+}

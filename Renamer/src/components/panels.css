@@ -1,0 +1,351 @@
+/* Autodesk Design System - Panels */
+
+/* Base panel styles */
+.adsk-panel {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--adsk-color-component-example-bg); /* Theme-adaptive background */
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible; /* Allow focus halos to escape container */
+}
+
+/* Add-in panel - full-height content panel for add-ins */
+.adsk-panel--addin {
+    background: var(--adsk-color-bg-panel);
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: none;
+}
+
+/* Panel header */
+.adsk-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--adsk-space-md);
+   background-color: rgba(128, 128, 128, 0.1);
+    border-bottom: 1px solid var(--adsk-color-card-border);
+    min-height: 44px;
+}
+
+.adsk-panel-header h1,
+.adsk-panel-header h2,
+.adsk-panel-header h3,
+.adsk-panel-header h4,
+.adsk-panel-header h5,
+.adsk-panel-header h6 {
+    margin: 0;
+    font-weight: var(--adsk-font-weight-semibold);
+    color: var(--adsk-color-text-primary);
+}
+
+.adsk-panel-header .adsk-panel-actions {
+    display: flex;
+    gap: var(--adsk-space-xs);
+}
+
+/* Panel body */
+.adsk-panel-body {
+    flex: 1;
+    padding: var(--adsk-space-md);
+    overflow-y: auto;
+}
+
+.adsk-panel-body--no-padding {
+    padding: 0;
+}
+
+.adsk-panel-body--small-padding {
+    padding: var(--adsk-space-sm);
+}
+
+.adsk-panel-body--large-padding {
+    padding: var(--adsk-space-xl);
+}
+
+/* Panel footer */
+.adsk-panel-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--adsk-space-sm);
+    padding: var(--adsk-space-md); /* Adequate padding provides halo space */
+    background-color: transparent;
+    border-top: 1px solid var(--adsk-color-border-subtle);
+    min-height: 44px;
+    /* Note: No explicit overflow:visible needed - default overflow behavior works */
+}
+
+.adsk-panel-footer--space-between {
+    justify-content: space-between;
+}
+
+.adsk-panel-footer--start {
+    justify-content: flex-start;
+}
+
+.adsk-panel-footer--center {
+    justify-content: center;
+}
+
+/* Panel variants */
+.adsk-panel--raised {
+    box-shadow: var(--adsk-shadow-md);
+}
+
+.adsk-panel--floating {
+    box-shadow: var(--adsk-shadow-lg);
+}
+
+.adsk-panel--borderless {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.adsk-panel--compact .adsk-panel-header,
+.adsk-panel--compact .adsk-panel-footer {
+    padding: var(--adsk-space-sm) var(--adsk-space-md);
+    min-height: 36px;
+}
+
+.adsk-panel--compact .adsk-panel-body {
+    padding: var(--adsk-space-sm) var(--adsk-space-md);
+}
+
+/* Collapsible panel */
+.adsk-panel--collapsible .adsk-panel-header {
+    cursor: pointer;
+    user-select: none;
+}
+
+.adsk-panel--collapsible .adsk-panel-header::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid var(--adsk-color-text-secondary);
+    transition: transform var(--adsk-transition-fast);
+    margin-left: var(--adsk-space-sm);
+}
+
+.adsk-panel--collapsible.adsk-panel--collapsed .adsk-panel-header::after {
+    transform: rotate(-90deg);
+}
+
+.adsk-panel--collapsible.adsk-panel--collapsed .adsk-panel-body,
+.adsk-panel--collapsible.adsk-panel--collapsed .adsk-panel-footer {
+    display: none;
+}
+
+/* Card component (lighter panel variant) */
+.adsk-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--adsk-color-component-example-bg); /* Theme-adaptive background */
+    border: 1px solid var(--adsk-color-card-border);
+    border-radius: var(--adsk-border-radius-extra-small);
+    transition: all var(--adsk-transition-fast);
+}
+
+.adsk-card:hover {
+    box-shadow: var(--adsk-shadow-md);
+    border-color: var(--adsk-color-border-default);
+}
+
+.adsk-card-header {
+    padding: var(--adsk-space-md);
+    border-bottom: 1px solid var(---adsk-color-border-subtle);
+}
+
+.adsk-card-header h1,
+.adsk-card-header h2,
+.adsk-card-header h3,
+.adsk-card-header h4,
+.adsk-card-header h5,
+.adsk-card-header h6 {
+    margin: 0;
+    font-weight: var(--adsk-font-weight-medium);
+    color: var(--adsk-color-text-primary);
+}
+
+.adsk-card-body {
+    flex: 1;
+    padding: var(--adsk-space-md);
+}
+
+.adsk-card-footer {
+    padding: var(--adsk-space-md);
+    border-top: 1px solid var(--adsk-color-card-border);
+    background-color: transparent;
+}
+
+/* Card variants */
+.adsk-card--interactive {
+    cursor: pointer;
+    transition: all var(--adsk-transition-fast);
+}
+
+.adsk-card--interactive:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--adsk-shadow-lg);
+}
+
+.adsk-card--interactive:active {
+    transform: translateY(0);
+    box-shadow: var(--adsk-shadow-md);
+}
+
+.adsk-card--compact .adsk-card-header,
+.adsk-card--compact .adsk-card-body,
+.adsk-card--compact .adsk-card-footer {
+    padding: var(--adsk-space-sm);
+}
+
+/* List styles within panels */
+.adsk-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.adsk-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--adsk-space-sm) var(--adsk-space-md);
+    color: var(--adsk-color-text-primary);
+    transition: background-color var(--adsk-transition-base);
+    cursor: default;
+    position: relative;
+}
+
+.adsk-list-item:not(:last-child) {
+    border-bottom: 1px solid var(--adsk-color-border-subtle);
+}
+
+/* Interactive list items (clickable) */
+.adsk-list-item--interactive {
+    cursor: pointer;
+}
+
+.adsk-list-item--interactive:hover {
+    background: rgba(6, 150, 215, 0.1);
+}
+
+/* Selected state for interactive lists */
+.adsk-list-item--selected {
+    background: rgba(6, 150, 215, 0.25);
+}
+
+/* Selectable list variant - shows checkmarks */
+.adsk-list--selectable .adsk-list-item {
+    cursor: pointer;
+}
+
+.adsk-list--selectable .adsk-list-item:hover::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    mask: var(--adsk-dropdown-checkmark-mask);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    background: var(--adsk-color-dropdown-checkmark-hover);
+    flex-shrink: 0;
+}
+
+.adsk-list--selectable .adsk-list-item--selected::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    mask: var(--adsk-dropdown-checkmark-mask);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    background: var(--adsk-color-dropdown-checkmark-selected);
+    flex-shrink: 0;
+}
+
+.adsk-list--selectable .adsk-list-item:hover {
+    background: rgba(6, 150, 215, 0.1);
+}
+
+.adsk-list--selectable .adsk-list-item--selected {
+    background: rgba(6, 150, 215, 0.25);
+}
+
+/* Disabled list items */
+.adsk-list-item--disabled {
+    color: var(--adsk-color-text-tertiary);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Status indicators for panels */
+.adsk-panel--error {
+    border-color: var(--adsk-color-border-error);
+}
+
+.adsk-panel--error .adsk-panel-header {
+    background-color: var(--adsk-color-status-error-bg);
+    border-bottom-color: var(--adsk-color-border-error);
+}
+
+.adsk-panel--success {
+    border-color: var(--adsk-color-border-success);
+}
+
+.adsk-panel--success .adsk-panel-header {
+    background-color: var(--adsk-color-status-success-bg);
+    border-bottom-color: var(--adsk-color-border-success);
+}
+
+.adsk-panel--warning {
+    border-color: var(--adsk-color-border-warning);
+}
+
+.adsk-panel--warning .adsk-panel-header {
+    background-color: var(--adsk-color-status-warning-bg);
+    border-bottom-color: var(--adsk-color-border-warning);
+}
+
+/* Panel group */
+.adsk-panel-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--adsk-space-md);
+}
+
+.adsk-panel-group .adsk-panel {
+    margin-bottom: 0;
+}
+
+/* =================================================================== */
+/* DENSITY OVERRIDES - Medium Density */
+/* =================================================================== */
+
+body.density-medium .adsk-panel-header {
+    padding: 16px;
+    min-height: 52px;
+}
+
+body.density-medium .adsk-panel-body {
+    padding: 16px;
+}
+
+body.density-medium .adsk-panel-footer {
+    padding: 16px;
+}
+
+body.density-medium .adsk-panel-group {
+    gap: 16px;
+}
+
+body.density-medium .adsk-panel--addin {
+    padding: none;
+}

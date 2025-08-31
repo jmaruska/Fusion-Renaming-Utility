@@ -1,0 +1,150 @@
+/* Autodesk Design System - Demo Layout Styles */
+
+/* Focus Halo Support - Prevent clipping of focus rings */
+.adsk-focus-container {
+    overflow: visible !important;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: var(--adsk-color-bg-body);
+    font-family: var(--adsk-font-family-base);
+    transition: all 0.3s ease;
+}
+
+.component-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.component-example {
+    padding: 15px;
+    background: var(--adsk-color-component-example-bg); /* Theme-adaptive background */
+    border-radius: var(--adsk-border-radius-small);
+    border: 1px solid var(--adsk-color-component-example-border);
+    transition: all 0.3s ease;
+}
+
+/* Button spacing for better interaction visibility - DEPRECATED */
+/* Use .adsk-button-group instead for new implementations */
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--adsk-space-sm); /* Use density-aware spacing */
+}
+
+/* =================================================================== */
+/* DENSITY OVERRIDES - Medium Density */
+/* =================================================================== */
+
+body.density-medium .demo-section {
+    margin-bottom: 32px;
+    padding: 20px;
+}
+
+body.density-medium .component-grid {
+    gap: 16px;
+}
+
+body.density-medium .adsk-toolbar {
+    padding: 12px 20px;
+    min-height: 48px;
+}
+
+body.density-medium .theme-switcher {
+    /* Override density scaling - keep theme switchers at fixed size */
+    padding: var(--adsk-space-md) !important; /* Same as high density */
+    margin-bottom: var(--adsk-space-sm) !important; /* Same as high density */
+    font-size: 12px !important; /* Fixed font size */
+    line-height: 1.4 !important; /* Fixed line height */
+}
+
+body.density-medium .theme-switcher:nth-of-type(2) {
+    top: 140px !important; /* Keep same positioning regardless of density */
+}
+
+/* DEPRECATED - Use .adsk-button-group instead */
+body.density-medium .button-group {
+    gap: var(--adsk-space-medium-sm); /* Use medium density spacing */
+}
+
+
+/* =================================================================== */
+/* demo specific css */
+/* =================================================================== */
+
+.demo-section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background: var(--adsk-color-demo-section-bg); /* Theme-adaptive background */
+    border: 1px solid var(--adsk-color-demo-section-border);
+    border-radius: var(--adsk-border-radius-medium);
+    transition: all 0.3s ease;
+}
+
+.demo-section h2 {
+    margin-top: 0;
+    color: var(--adsk-color-text-primary);
+    border-bottom: 1px solid var(--adsk-color-demo-section-border);
+    padding-bottom: 10px;
+}
+
+/* Theme Switcher Styles */
+.theme-switcher {
+    position: fixed;
+    top: 88px;
+    right: 20px;
+    background: var(--adsk-color-bg-modal);
+    border: 1px solid var(--adsk-color-theme-switcher-border);
+    border-radius: var(--adsk-border-radius-medium);
+    padding: var(--adsk-space-md);
+    box-shadow: var(--adsk-shadow-lg);
+    z-index: 1000;
+    min-width: 180px;
+    /* Fixed sizing - ignore density scaling */
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+}
+
+.theme-switcher:nth-of-type(2) {
+    top: 140px; /* Position density switcher below theme switcher - will adjust dynamically */
+}
+
+.theme-switcher h4 {
+    margin: 0 0 var(--adsk-space-sm) 0;
+    font-size: var(--adsk-font-size-sm);
+    color: var(--adsk-color-text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    /* Fixed sizing - ignore density scaling */
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+}
+
+/* Override radio button sizes in theme switcher to ignore density */
+.theme-switcher .adsk-radio {
+    margin-bottom: 8px !important;
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+}
+
+.theme-switcher .adsk-radio:last-child {
+    margin-bottom: 0 !important;
+}
+
+.theme-switcher .adsk-radio .adsk-radio-mark {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+}
+
+.theme-switcher .adsk-radio .adsk-radio-mark::after {
+    width: 8px !important;
+    height: 8px !important;
+    top: 3px !important;
+    left: 3px !important;
+}

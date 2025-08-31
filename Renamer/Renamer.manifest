@@ -1,0 +1,13 @@
+{
+	"autodeskProduct":	"Fusion",
+	"type":	"addin",
+	"id":	"3fc01827-33b1-4f3d-9660-ca44ac7a4a11",
+	"author":	"Joshua MAruska",
+	"description":	{
+		"":	""
+	},
+	"version":	"0.1.0",
+	"runOnStartup":	false,
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

@@ -1,0 +1,109 @@
+/* CSS Reset and Normalize for Autodesk Design System */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: var(--adsk-font-family-base); /* Open Sans for UI */
+    line-height: var(--adsk-line-height-base);
+    color: var(--adsk-color-text-primary);
+    background-color: var(--adsk-color-bg-primary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 0.5rem 0;
+    font-family: var(--adsk-font-family-display); /* Artifakt Element for headings */
+    font-weight: var(--adsk-font-weight-semibold);
+    line-height: var(--adsk-line-height-tight);
+    color: var(--adsk-color-text-primary);
+}
+
+p {
+    margin: 0 0 1rem 0;
+}
+
+button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+    overflow: visible;
+    text-transform: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+button::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Focus management - component-specific halo system handles focus styling */
+:focus {
+    outline: none; 
+}
+
+/* Disable focus outline when not using keyboard */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Typography Utility Classes */
+.adsk-font-display {
+    font-family: var(--adsk-font-family-display) !important;
+}
+
+.adsk-font-ui {
+    font-family: var(--adsk-font-family-base) !important;
+}
+
+.adsk-font-mono {
+    font-family: var(--adsk-font-family-monospace) !important;
+}

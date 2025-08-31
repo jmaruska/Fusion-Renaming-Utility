@@ -1,0 +1,63 @@
+/* Autodesk Design System - Custom Scrollbars */
+
+/* =================================================================== */
+/* WEBKIT SCROLLBARS (Chrome, Safari, Edge) - Theme Specific */
+/* =================================================================== */
+
+
+/* =================================================================== */
+/* WEBKIT SCROLLBARS (Chrome, Safari, Edge) - Using CSS Variables */
+/* =================================================================== */
+
+::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--adsk-scrollbar-thumb-color, rgba(0, 0, 0, 0.2));
+    -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+
+/* Light Gray Theme Firefox */
+.theme-light-gray * {
+    scrollbar-width: thin;
+    scrollbar-color: #00000030 transparent;
+}
+
+/* Dark Gray Theme Firefox */
+.theme-dark-gray * {
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff30 transparent;
+}
+
+/* Dark Blue Theme Firefox */
+.theme-dark-blue * {
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff30 transparent;
+}
+
+/* =================================================================== */
+/* SCROLLABLE CONTAINER HELPERS */
+/* =================================================================== */
+
+/* Apply to containers that should have custom scrollbars */
+.adsk-scrollable {
+    overflow: auto;
+}
+
+.adsk-scrollable-x {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.adsk-scrollable-y {
+    overflow-y: auto;
+    overflow-x: hidden;
+}

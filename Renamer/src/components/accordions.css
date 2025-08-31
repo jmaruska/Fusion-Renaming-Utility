@@ -1,0 +1,145 @@
+/* =================================================================== */
+/* AUTODESK WEAVE UI - ACCORDION COMPONENT */
+/* Modern accordion implementation matching Weave UI design system */
+/* =================================================================== */
+
+.adsk-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.adsk-accordion-item {
+    border: none;
+    border-radius: 0;
+}
+
+.adsk-accordion-header {
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+
+.adsk-accordion-button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--adsk-space-md) var(--adsk-space-lg);
+    background-color: var(--adsk-color-bg-tertiary);
+    border: none;
+    cursor: pointer;
+    font-family: var(--adsk-font-family-display);
+    font-size: var(--adsk-font-size-body);
+    font-weight: 500;
+    color: var(--adsk-color-text-primary);
+    text-align: left;
+    transition: background-color 0.15s ease;
+}
+
+.adsk-accordion-button:hover {
+    background-color: var(--adsk-color-bg-quaternary);
+}
+
+.adsk-accordion-button:focus {
+    outline: none;
+    background-color: var(--adsk-color-bg-quaternary);
+}
+
+.adsk-accordion-button:focus-visible {
+    box-shadow: var(--adsk-focus-ring);
+}
+
+.adsk-accordion-icon {
+    width: 10px;
+    height: 10px;
+    margin-right: var(--adsk-space-md);
+    transition: transform 0.2s ease;
+    transform: rotate(0deg);
+    flex-shrink: 0;
+}
+
+/* Override UI widget sizing for accordion context */
+.adsk-accordion-button .icon-caret-right-m {
+    width: 10px !important;
+    height: 10px !important;
+}
+
+.adsk-accordion-button[aria-expanded="true"] .adsk-accordion-icon {
+    transform: rotate(90deg);
+}
+
+.adsk-accordion-title {
+    flex: 1;
+    font-weight: 600;
+}
+
+.adsk-accordion-content {
+    display: none;
+    padding: var(--adsk-space-sm) var(--adsk-space-xs);  /* Vertical 8px, Horizontal 4px */
+    background-color: var(--adsk-color-background-default);
+}
+
+.adsk-accordion-content.adsk-accordion-open {
+    display: block;
+}
+
+/* Animation for smooth expand/collapse */
+.adsk-accordion-content {
+    overflow: visible; /* Allow focus halos to escape container */
+    transition: max-height 0.3s ease;
+}
+
+/* High density adjustments */
+.density-high .adsk-accordion-button {
+    padding: var(--adsk-space-sm) var(--adsk-space-md);
+    font-size: var(--adsk-font-size-small);
+}
+
+.density-high .adsk-accordion-content {
+    padding: var(--adsk-space-sm) var(--adsk-space-xs);
+}
+
+/* High density: hide m caret and show s caret */
+.density-high .adsk-accordion-button .icon-caret-right-m {
+    display: none;
+}
+
+.density-high .adsk-accordion-button::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 7px;
+    margin-right: var(--adsk-space-sm);
+    background-color: #FF0000; /* Debug Red */
+    mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%204%207%22%3E%3Cg%20%3E%3Cpolygon%20points%3D%220%207%200%200%204%203.5%200%207%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%204%207%22%3E%3Cg%20%3E%3Cpolygon%20points%3D%220%207%200%200%204%203.5%200%207%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    transition: transform 0.2s ease;
+    transform: rotate(0deg);
+    flex-shrink: 0;
+}
+
+/* FINAL: Theme-specific colors for high density pseudo-element */
+body.theme-light-gray.density-high .adsk-accordion-button::before {
+    background-color: var(--adsk-icon-widget) !important;
+}
+
+body.theme-dark-gray.density-high .adsk-accordion-button::before {
+    background-color: var(--adsk-icon-widget) !important;
+}
+
+body.theme-dark-blue.density-high .adsk-accordion-button::before {
+    background-color: var(--adsk-icon-widget) !important;
+}
+
+.density-high .adsk-accordion-button[aria-expanded="true"]::before {
+    transform: rotate(90deg);
+}
+
+/* Theme-specific styling handled by CSS custom properties */

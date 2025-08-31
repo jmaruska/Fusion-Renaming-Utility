@@ -1,0 +1,215 @@
+/* Autodesk Design System - Dropdowns */
+/* HIG-compliant dropdown that matches text input styling exactly */
+
+/* Dropdown Container */
+.adsk-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Hide native select (keep for accessibility) */
+.adsk-dropdown select {
+    display: none !important;
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+/* Custom Dropdown Button (matches .adsk-input-box exactly) */
+.adsk-dropdown-button {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 0 8px 0 0;
+    font-family: var(--adsk-font-family-base);
+    font-size: var(--adsk-font-size-base);
+    line-height: var(--adsk-line-height-base);
+    color: var(--adsk-color-text-primary);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--adsk-input-border-default);
+    border-radius: 0;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* Placeholder text styling - when no selection is made */
+.adsk-dropdown-button span {
+    color: var(--adsk-color-text-tertiary);
+    opacity: 0.7;
+    pointer-events: none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+/* Selected text styling - when an item has been selected */
+.adsk-dropdown-button.adsk-dropdown-button--selected span {
+    color: var(--adsk-theme-text-primary);
+    opacity: 1;
+}
+
+/* When option is selected, text should not look like placeholder */
+.adsk-dropdown-button.has-selection span {
+    color: var(--adsk-color-text-primary);
+    opacity: 1;
+}
+
+/* Hover State (matches .adsk-input-box:hover exactly) */
+.adsk-dropdown-button:hover {
+    border-bottom: 1px solid var(--adsk-input-border-hover);
+    box-shadow: 0 4px 0 var(--adsk-input-border-hover-shadow);
+}
+
+/* Chevron Arrow - positioned absolutely on the right */
+.adsk-dropdown-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 10px;
+    height: 10px;
+    mask: var(--adsk-dropdown-chevron-mask);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    background: var(--adsk-color-dropdown-chevron);
+    transform: translateY(-50%);
+    transition: transform var(--adsk-transition-fast), background var(--adsk-transition-fast);
+    pointer-events: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Focus State - Blue border + box shadow (matches .adsk-input-box:focus-within exactly) */
+.adsk-dropdown-button:focus,
+.adsk-dropdown--open .adsk-dropdown-button {
+    outline: none;
+    border-bottom: 1px solid var(--primary-autodeskBlue-500);
+    box-shadow: 0 4px 0 rgba(6, 150, 215, 0.25);
+}
+
+/* Hover state for open dropdown should still show focus */
+.adsk-dropdown--open .adsk-dropdown-button:hover {
+    border-bottom: 1px solid var(--primary-autodeskBlue-500);
+    box-shadow: 0 4px 0 rgba(6, 150, 215, 0.25);
+}
+
+/* Open State - Arrow rotates 180 degrees and turns blue */
+.adsk-dropdown--open .adsk-dropdown-button::after {
+    transform: translateY(-50%) rotate(180deg);
+    background: var(--adsk-color-dropdown-chevron-focus);
+}
+
+/* Dropdown Content Panel */
+.adsk-dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: var(--adsk-color-bg-modal) !important;
+    border: 0px;
+    border-radius: 0;
+    box-shadow: var(--adsk-shadow-lg);
+    z-index: var(--adsk-z-dropdown);
+    margin-top: 2px;
+    padding: var(--adsk-space-xs) 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* When positioned by JavaScript to escape overflow containers */
+.adsk-dropdown--open .adsk-dropdown-content {
+    display: block;
+    /* JavaScript will set position: fixed and coordinates when needed */
+}
+
+/* Dropdown Items */
+.adsk-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--adsk-space-sm) var(--adsk-space-md);
+    font-family: var(--adsk-font-family-base);
+    font-size: var(--adsk-font-size-base);
+    color: var(--adsk-color-text-primary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color var(--adsk-transition-base);
+    position: relative;
+}
+
+/* Hover State for Items */
+.adsk-dropdown-item:hover {
+    background: rgba(6, 150, 215, 0.1);
+}
+
+/* Selected Item */
+.adsk-dropdown-item--selected {
+    background: rgba(6, 150, 215, 0.25);
+}
+
+/* Hover state checkmark - lighter color */
+.adsk-dropdown-item:hover::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    mask: var(--adsk-dropdown-checkmark-mask);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    background: var(--adsk-color-dropdown-checkmark-hover);
+    flex-shrink: 0;
+}
+
+/* Selected item checkmark - blue accent color */
+.adsk-dropdown-item--selected::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    mask: var(--adsk-dropdown-checkmark-mask);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    background: var(--adsk-color-dropdown-checkmark-selected);
+    flex-shrink: 0;
+}
+
+/* Disabled Items */
+.adsk-dropdown-item:disabled,
+.adsk-dropdown-item--disabled {
+    color: var(--adsk-color-text-tertiary);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Prevent pointer events on child elements */
+.adsk-dropdown-item *,
+.adsk-dropdown-button span {
+    pointer-events: none;
+}
+
+/* Dropdown Sizes */
+.adsk-dropdown--small .adsk-dropdown-button {
+    height: var(--adsk-input-height-sm);
+    font-size: var(--adsk-font-size-sm);
+}
+
+.adsk-dropdown--large .adsk-dropdown-button {
+    height: var(--adsk-input-height-lg);
+    font-size: var(--adsk-font-size-lg);
+}

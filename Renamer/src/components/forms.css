@@ -1,0 +1,1180 @@
+/* Autodesk Design System - Form Controls */
+
+/* Form groups and layout */
+.adsk-form-group {
+    margin-bottom: var(--adsk-space-lg);
+}
+
+.adsk-form-group:last-child {
+    margin-bottom: 0;
+}
+
+/* Tighter spacing for form groups inside accordion content */
+.adsk-accordion-content .adsk-form-group {
+    margin-bottom: var(--adsk-space-md);
+}
+
+.adsk-accordion-content .adsk-form-group:last-child {
+    margin-bottom: 0;
+}
+
+.adsk-form-row {
+    display: flex;
+    gap: var(--adsk-space-md);
+    margin-bottom: var(--adsk-space-lg);
+}
+
+.adsk-form-row .adsk-form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* Labels */
+.adsk-label {
+    display: block;
+    font-size: var(--adsk-font-size-sm);
+    font-weight: var(--adsk-font-weight-medium);
+    color: var(--adsk-color-text-primary);
+    margin-top: var(--adsk-space-xs);
+    margin-bottom: 1px;
+    line-height: var(--adsk-line-height-base);
+}
+
+/* High density mode: slightly more breathing room between label and input */
+body.density-high .adsk-label {
+    margin-bottom: 2px;
+}
+
+/* Form groups inside stacks should have controlled spacing */
+.adsk-stack .adsk-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.adsk-label--required::after {
+    content: '*';
+    color: var(--adsk-color-status-error);
+    margin-left: 2px;
+}
+
+.adsk-label--optional::after {
+    content: ' (optional)';
+    color: var(--adsk-color-text-tertiary);
+    font-weight: var(--adsk-font-weight-normal);
+}
+
+/* Base input styles */
+.adsk-input {
+    display: block;
+    width: 100%;
+    height: var(--adsk-input-height-base);
+    padding: 0 var(--adsk-space-sm);
+    font-family: var(--adsk-font-family-base);
+    font-size: var(--adsk-font-size-base);
+    line-height: var(--adsk-line-height-base);
+    color: var(--adsk-color-text-primary);
+    background-color: var(--adsk-color-bg-surface);
+    border: 1px solid var(--adsk-color-border-default);
+    border-radius: var(--adsk-border-radius-medium);
+    transition: all var(--adsk-transition-fast);
+}
+
+.adsk-input::placeholder {
+    color: var(--adsk-color-text-tertiary);
+}
+
+.adsk-input:focus {
+    outline: none;
+    border-color: var(--adsk-color-border-focus);
+    box-shadow: 0 0 0 2px rgba(6, 150, 215, 0.1);
+    border-radius: 2px;
+}
+
+.adsk-input:disabled {
+    background-color: var(--adsk-color-bg-disabled);
+    color: var(--adsk-color-text-disabled);
+    cursor: not-allowed;
+}
+
+.adsk-input--error {
+    border-color: var(--adsk-color-border-error);
+}
+
+.adsk-input--error:focus {
+    border-color: var(--adsk-color-border-error);
+    box-shadow: 0 0 0 2px rgba(221, 34, 34, 0.1);
+    border-radius: 2px;
+}
+
+.adsk-input--success {
+    border-color: var(--adsk-color-border-success);
+}
+
+.adsk-input--success:focus {
+    border-color: var(--adsk-color-border-success);
+    box-shadow: 0 0 0 2px rgba(106, 151, 40, 0.1);
+    border-radius: 2px;
+}
+
+/* Input sizes */
+.adsk-input--small {
+    height: var(--adsk-input-height-sm);
+    font-size: var(--adsk-font-size-sm);
+    padding: 0 var(--adsk-space-xs);
+}
+
+.adsk-input--large {
+    height: var(--adsk-input-height-lg);
+    font-size: var(--adsk-font-size-lg);
+    padding: 0 var(--adsk-space-md);
+}
+
+/* =================================================================== */
+/* FUSION 360 STYLE INPUT BOXES */
+/* =================================================================== */
+
+/* Main input container */
+.adsk-input-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    height: var(--adsk-input-height-medium-base, 36px); /* Default to medium density */
+    background: inherit;
+    border: none;
+    border-bottom: 1px solid var(--adsk-input-border-default);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    margin-top: -2px; /* Pull input box closer to label */
+}
+
+/* Input field inside the container */
+.adsk-input-box .adsk-input-field {
+    display: block;
+    width: 100%;
+    height: calc(var(--adsk-input-height-medium-base, 36px) - 2px); /* Subtract border */
+    border: none;
+    background: transparent;
+    color: var(--adsk-color-text-primary);
+    font-family: var(--adsk-font-family-base);
+    font-size: var(--adsk-font-size-base);
+    padding: 0 8px 0 0;
+    outline: none;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Contenteditable div for advanced input types */
+.adsk-input-box .adsk-input-content {
+    display: block;
+    width: 100%;
+    height: 20px;
+    border: none;
+    background: transparent;
+    color: var(--adsk-color-text-primary);
+    font-family: var(--adsk-font-family-base);
+    font-size: var(--adsk-font-size-base);
+    padding: 0 8px 0 0;
+    outline: none;
+    margin: auto 0;
+    box-sizing: border-box;
+    line-height: 20px;
+    overflow: hidden;
+}
+
+/* Placeholder styling */
+.adsk-input-box .adsk-input-field::placeholder,
+.adsk-input-box .adsk-input-content:empty::before {
+    color: var(--adsk-color-text-tertiary);
+    opacity: 0.7;
+}
+
+.adsk-input-box .adsk-input-content:empty::before {
+    content: attr(data-placeholder);
+}
+
+/* Hover state */
+.adsk-input-box:hover {
+    border-bottom: 1px solid var(--adsk-input-border-hover);
+    box-shadow: 0 4px 0 var(--adsk-input-border-hover-shadow);
+    border-radius: 2px;
+}
+
+/* Focus state */
+.adsk-input-box:focus-within {
+    border-bottom: 1px solid var(--primary-autodeskBlue-500);
+    box-shadow: 0 4px 0 rgba(6, 150, 215, 0.25);
+    border-radius: 2px;
+}
+
+/* Error state */
+.adsk-input-box--error {
+    border-bottom: 1px solid var(--adsk-color-status-error);
+}
+
+.adsk-input-box--error:hover {
+    border-bottom: 1px solid var(--adsk-color-status-error);
+    box-shadow: 0 4px 0 rgba(221, 34, 34, 0.25);
+    border-radius: 2px;
+}
+
+.adsk-input-box--error:focus-within {
+    border-bottom: 1px solid var(--adsk-color-status-error);
+    box-shadow: 0 4px 0 rgba(221, 34, 34, 0.25);
+    border-radius: 2px;
+}
+
+/* Success state */
+.adsk-input-box--success {
+    border-bottom: 1px solid var(--adsk-color-status-success);
+}
+
+.adsk-input-box--success:hover {
+    border-bottom: 1px solid var(--adsk-color-status-success);
+    box-shadow: 0 4px 0 rgba(106, 151, 40, 0.25);
+    border-radius: 2px;
+}
+
+.adsk-input-box--success:focus-within {
+    border-bottom: 1px solid var(--adsk-color-status-success);
+    box-shadow: 0 4px 0 rgba(106, 151, 40, 0.25);
+    border-radius: 2px;
+}
+
+/* Disabled state */
+.adsk-input-box--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.adsk-input-box--disabled .adsk-input-field,
+.adsk-input-box--disabled .adsk-input-content {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Numeric input with spinners */
+.adsk-input-box--numeric {
+    position: relative;
+}
+
+.adsk-input-box--numeric .adsk-input-spinners {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.adsk-input-box--numeric .adsk-input-spinner {
+    width: 12px;
+    height: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--adsk-color-text-secondary);
+    user-select: none;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.adsk-input-box--numeric .adsk-input-spinner:hover {
+    color: var(--adsk-color-text-primary);
+}
+
+.adsk-input-box--numeric .adsk-input-spinner:active {
+    color: var(--adsk-color-text-primary);
+}
+
+/* Up arrow using CSS triangle */
+.adsk-input-box--numeric .adsk-input-spinner--up::before {
+    content: ''; /* This was missing! */
+    position: absolute; /* This was missing! */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-bottom: 4px solid currentColor;
+}
+
+/* Down arrow using CSS triangle */
+.adsk-input-box--numeric .adsk-input-spinner--down::before {
+    content: ''; /* This was missing! */
+    position: absolute; /* This was missing! */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 4px solid currentColor;
+}
+
+/* Wrapper for grouped input boxes */
+.adsk-input-box-group {
+    display: flex;
+    gap: 1px;
+}
+
+.adsk-input-box-group .adsk-input-box {
+    flex: 1;
+}
+
+/* =================================================================== */
+/* CONJOINED INPUT+BUTTON PATTERN - For search, prefix/suffix, etc */
+/* =================================================================== */
+.adsk-input-group {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    overflow: visible; /* Allow halos to escape */
+}
+
+.adsk-input-group .adsk-input-box {
+    flex: 1;
+    margin-top: 0; /* Remove label offset for grouped inputs */
+}
+
+.adsk-input-group .adsk-input-box .adsk-input-field {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.adsk-input-group .adsk-btn {
+    flex-shrink: 0;
+    height: var(--adsk-input-height-medium-base, 36px); /* Match input height */
+    border-top-left-radius: var(--adsk-border-radius-extra-small, 2px) !important;
+    border-bottom-left-radius: var(--adsk-border-radius-extra-small, 2px) !important;
+    border-top-right-radius: var(--adsk-border-radius-extra-small, 2px) !important;
+    border-bottom-right-radius: var(--adsk-border-radius-extra-small, 2px) !important;
+    margin-left: var(--adsk-space-xs); /* Add small gap between input and button */
+}
+
+/* High density override for conjoined buttons */
+body.density-high .adsk-input-group .adsk-btn {
+    height: var(--adsk-input-height-sm, 24px); /* 24px for high density */
+}
+
+/* Medium density override for conjoined buttons */
+body.density-medium .adsk-input-group .adsk-btn {
+    height: var(--adsk-input-height-medium-base, 36px); /* 36px for medium density */
+}
+
+/* Textarea */
+.adsk-textarea {
+    min-height: 80px;
+    max-height: 200px;
+    padding: var(--adsk-space-sm);
+    resize: vertical;
+    line-height: var(--adsk-line-height-relaxed);
+}
+
+/* Select dropdown */
+.adsk-select {
+    display: block;
+    width: 100%;
+    height: var(--adsk-input-height-base);
+    padding: 0 var(--adsk-space-sm);
+    font-family: var(--adsk-font-family-base);
+    font-size: var(--adsk-font-size-base);
+    line-height: var(--adsk-line-height-base);
+    color: var(--adsk-color-text-primary);
+    background-color: var(--adsk-color-bg-surface);
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23999' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--adsk-space-sm) center;
+    background-size: 16px 12px;
+    border: 1px solid var(--adsk-color-border-default);
+    border-radius: var(--adsk-border-radius-medium);
+    transition: all var(--adsk-transition-fast);
+    cursor: pointer;
+    padding-right: calc(var(--adsk-space-sm) + 20px);
+}
+
+.adsk-select:focus {
+    outline: none;
+    border-color: var(--adsk-color-border-focus);
+    box-shadow: 0 0 0 2px rgba(6, 150, 215, 0.1);
+}
+
+.adsk-select:disabled {
+    background-color: var(--adsk-color-bg-disabled);
+    color: var(--adsk-color-text-disabled);
+    cursor: not-allowed;
+}
+
+/* Checkbox - Fusion 360 Authentic Styles with CSS-based icons */
+.adsk-checkbox {
+    display: flex;
+    align-items: center; /* Center align vertically for better label alignment */
+    gap: var(--adsk-space-sm);
+    font-size: var(--adsk-font-size-base);
+    line-height: var(--adsk-line-height-base);
+    cursor: pointer;
+    margin-bottom: var(--adsk-space-sm);
+    position: relative;
+}
+
+.adsk-checkbox:last-child {
+    margin-bottom: 0;
+}
+
+.adsk-checkbox input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    position: absolute;
+    opacity: 0;
+    width: var(--adsk-checkbox-size);
+    height: var(--adsk-checkbox-size);
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.adsk-checkbox-mark {
+    position: relative;
+    display: block;
+    width: var(--adsk-checkbox-size);
+    height: var(--adsk-checkbox-size);
+    background: var(--adsk-color-checkbox-bg);
+    border: 1px solid var(--adsk-color-checkbox-border);
+    border-radius: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all var(--adsk-transition-fast);
+    box-sizing: border-box;
+    /* Default subtle box-shadow */
+    box-shadow: var(--adsk-halo-subtle);
+}
+
+/* Hover state - similar to outline buttons, works even when checked */
+.adsk-checkbox:hover .adsk-checkbox-mark,
+.adsk-checkbox input[type="checkbox"]:checked:hover + .adsk-checkbox-mark,
+.adsk-checkbox input[type="checkbox"]:indeterminate:hover + .adsk-checkbox-mark {
+    border-color: var(--adsk-color-checkbox-border-hover);
+    box-shadow: var(--adsk-form-shadow-hover) 0px 0px 0px 2px;
+    border-radius: 2px;
+}
+
+/* Checked state */
+.adsk-checkbox input[type="checkbox"]:checked + .adsk-checkbox-mark {
+    background: var(--adsk-color-checkbox-bg-checked);
+    border-color: var(--adsk-color-checkbox-border-checked);
+}
+
+/* Active/Click state - grows box-shadow */
+.adsk-checkbox input[type="checkbox"]:active + .adsk-checkbox-mark {
+    box-shadow: var(--adsk-form-shadow-active) 0px 0px 0px 4px;
+    border-radius: 2px;
+}
+
+/* Focus state - only show when not using mouse (focus-visible) */
+.adsk-checkbox input[type="checkbox"]:focus-visible + .adsk-checkbox-mark {
+    border-color: var(--primary-autodeskBlue-500);
+    box-shadow: var(--adsk-theme-halo-focus-keyboard, rgba(6, 150, 215, 0.35)) 0px 0px 0px 4px;
+    border-radius: 2px;
+}
+
+/* Checked state checkmark icon using CSS */
+.adsk-checkbox input[type="checkbox"]:checked + .adsk-checkbox-mark::after {
+    content: '';
+    position: absolute;
+    top: 1px; /* Adjusted for 12px checkbox */
+    left: 3px; /* Adjusted for 12px checkbox */
+    width: 3px; /* Scaled down for 12px checkbox */
+    height: 6px; /* Scaled down for 12px checkbox */
+    border: solid var(--adsk-color-checkbox-icon);
+    border-width: 0 1.5px 1.5px 0; /* Slightly thinner for smaller size */
+    transform: rotate(45deg);
+    opacity: 1;
+}
+
+/* Indeterminate state */
+.adsk-checkbox input[type="checkbox"]:indeterminate + .adsk-checkbox-mark {
+    background: var(--adsk-color-checkbox-bg-checked);
+    border-color: var(--adsk-color-checkbox-border-checked);
+}
+
+/* Indeterminate state dash icon using CSS */
+.adsk-checkbox input[type="checkbox"]:indeterminate + .adsk-checkbox-mark::after {
+    content: '';
+    position: absolute;
+    top: 5px; /* Centered for 12px checkbox */
+    left: 2px; /* Adjusted for 12px checkbox */
+    width: 6px; /* Scaled down for 12px checkbox */
+    height: 1.5px; /* Slightly thinner for smaller size */
+    background: var(--adsk-color-checkbox-icon);
+    border: none;
+    transform: none;
+    opacity: 1;
+}
+
+/* Disabled state */
+.adsk-checkbox input[type="checkbox"]:disabled + .adsk-checkbox-mark {
+    background: var(--adsk-color-bg-disabled);
+    border-color: var(--adsk-color-border-subtle);
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.adsk-checkbox input[type="checkbox"]:disabled + .adsk-checkbox-mark::after {
+    border-color: var(--adsk-color-text-disabled);
+    background: var(--adsk-color-text-disabled);
+}
+
+/* =================================================================== */
+/* RADIO BUTTONS - Weave UI pattern with inset box-shadow dot */
+/* =================================================================== */
+.adsk-radio {
+    display: flex;
+    align-items: center; /* Center align vertically for better label alignment */
+    gap: var(--adsk-space-sm);
+    font-size: var(--adsk-font-size-base);
+    line-height: var(--adsk-line-height-base);
+    cursor: pointer;
+    margin-bottom: var(--adsk-space-sm);
+}
+
+.adsk-radio:last-child {
+    margin-bottom: 0;
+}
+
+.adsk-radio input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: var(--adsk-radio-size);
+    height: var(--adsk-radio-size);
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.adsk-radio-mark {
+    position: relative;
+    display: block;
+    width: var(--adsk-radio-size);
+    height: var(--adsk-radio-size);
+    background: var(--adsk-color-checkbox-bg);
+    border: 1px solid var(--adsk-color-radio-border);
+    border-radius: 50%; /* Round for radio buttons */
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all var(--adsk-transition-fast);
+    box-sizing: border-box;
+    /* Default with transparent inset shadow for smooth animation */
+    box-shadow: transparent 0px 0px 0px 0px, transparent 0px 0px 0px 0px inset;
+}
+
+/* Hover state - similar to checkboxes - but only for unchecked */
+.adsk-radio:hover input[type="radio"]:not(:checked) + .adsk-radio-mark {
+    border-color: var(--adsk-color-radio-border-hover);
+    box-shadow: var(--adsk-form-shadow-hover) 0px 0px 0px 2px;
+}
+
+/* Checked hover state - preserves inset shadow */
+.adsk-radio input[type="radio"]:checked:hover + .adsk-radio-mark {
+    border-color: var(--adsk-color-radio-border-hover);
+    box-shadow: var(--adsk-form-shadow-hover) 0px 0px 0px 2px, var(--adsk-color-radio-border-checked) 0px 0px 0px var(--adsk-radio-inset-size) inset;
+}
+
+/* Checked state - uses theme-adaptive colors */
+.adsk-radio input[type="radio"]:checked + .adsk-radio-mark {
+    background: var(--adsk-color-checkbox-bg); /* Keep original background - this shows as the center "hole" */
+    border-color: var(--adsk-color-radio-border-checked);
+    /* Thick border inset creates the donut effect - radio-border-checked provides theme-appropriate contrast */
+    box-shadow: transparent 0px 0px 0px 0px, var(--adsk-color-radio-border-checked) 0px 0px 0px var(--adsk-radio-inset-size) inset;
+}
+
+/* Active/Click state - 4px halo for unchecked */
+.adsk-radio input[type="radio"]:not(:checked):active + .adsk-radio-mark {
+    box-shadow: var(--adsk-form-shadow-active) 0px 0px 0px 4px;
+}
+
+/* Active/Click state - 4px halo for checked (preserves inset shadow) */
+.adsk-radio input[type="radio"]:checked:active + .adsk-radio-mark {
+    box-shadow: var(--adsk-form-shadow-active) 0px 0px 0px 4px, var(--adsk-color-radio-border-checked) 0px 0px 0px var(--adsk-radio-inset-size) inset;
+}
+
+/* Focus state - keyboard focus with blue 4px halo */
+.adsk-radio input[type="radio"]:focus-visible + .adsk-radio-mark {
+    border-color: var(--primary-autodeskBlue-500);
+    box-shadow: var(--adsk-theme-halo-focus-keyboard, rgba(6, 150, 215, 0.35)) 0px 0px 0px 4px;
+}
+
+/* Focus state for checked radio - blue 4px halo with inset shadow */
+.adsk-radio input[type="radio"]:checked:focus-visible + .adsk-radio-mark {
+    border-color: var(--primary-autodeskBlue-500);
+    box-shadow: var(--adsk-theme-halo-focus-keyboard, rgba(6, 150, 215, 0.35)) 0px 0px 0px 4px, var(--primary-autodeskBlue-500) 0px 0px 0px var(--adsk-radio-inset-size) inset;
+}
+
+/* Disabled state */
+.adsk-radio input[type="radio"]:disabled + .adsk-radio-mark {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* =================================================================== */
+/* TOGGLE/SLIDER SWITCH - Weave UI pattern */
+/* =================================================================== */
+.adsk-toggle {
+    position: relative;
+    display: inline-block;
+    width: var(--adsk-toggle-width);
+    height: var(--adsk-toggle-height);
+    margin-bottom: var(--adsk-space-sm);
+}
+
+.adsk-toggle:last-child {
+    margin-bottom: 0;
+}
+
+/* Hide default HTML checkbox */
+.adsk-toggle input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+/* The slider track */
+.adsk-toggle-track {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--adsk-color-checkbox-bg);
+    border: 1px solid var(--adsk-color-checkbox-border);
+    border-radius: calc(var(--adsk-toggle-height) / 2); /* Half of height for rounded ends */
+    transition: all var(--adsk-transition-fast);
+    box-sizing: border-box;
+    /* Default subtle box-shadow like other form controls */
+    box-shadow: var(--adsk-form-shadow-subtle) 0px 0px 0px 1px;
+}
+
+/* The slider thumb */
+.adsk-toggle-track:before {
+    position: absolute;
+    content: "";
+    height: var(--adsk-toggle-thumb-size); /* Use centralized variable */
+    width: var(--adsk-toggle-thumb-size); /* Use centralized variable */
+    left: 3px;
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Center vertically */
+    background-color: var(--adsk-color-checkbox-bg-checked); /* Use checkbox checked background color */
+    border-radius: 50%;
+    transition: all var(--adsk-transition-fast);
+    box-sizing: border-box;
+}
+
+/* Hover state */
+.adsk-toggle:hover .adsk-toggle-track {
+    border-color: var(--adsk-color-checkbox-border-hover);
+    box-shadow: var(--adsk-form-shadow-hover) 0px 0px 0px 2px;
+}
+
+/* Focus state - keyboard navigation */
+.adsk-toggle input[type="checkbox"]:focus-visible + .adsk-toggle-track {
+    border-color: var(--adsk-color-keyboard-focus-border) !important;
+    box-shadow: var(--adsk-color-keyboard-focus-shadow) 0px 0px 0px 2px !important;
+}
+
+/* Active/Click state */
+.adsk-toggle input[type="checkbox"]:active + .adsk-toggle-track {
+    box-shadow: var(--adsk-form-shadow-active) 0px 0px 0px 4px;
+}
+
+/* Checked/On state - blue track, white thumb */
+.adsk-toggle input[type="checkbox"]:checked + .adsk-toggle-track {
+    background: var(--primary-autodeskBlue-500);
+    border-color: var(--primary-autodeskBlue-500);
+}
+
+/* Checked state thumb - moves right and becomes white */
+.adsk-toggle input[type="checkbox"]:checked + .adsk-toggle-track:before {
+    transform: translateX(var(--adsk-toggle-throw)) translateY(-50%); /* Use centralized variable for throw distance */
+    background-color: var(--primary-white);
+}
+
+/* High density (CAD) adjustments */
+body.density-high .adsk-input {
+    height: var(--adsk-input-height-sm);
+    padding: 0 var(--adsk-space-xs);
+    font-size: var(--adsk-font-size-sm);
+}
+
+body.density-high .adsk-select {
+    height: var(--adsk-input-height-sm);
+    padding: 0 var(--adsk-space-xs);
+    font-size: var(--adsk-font-size-sm);
+}
+
+body.density-high .adsk-textarea {
+    padding: var(--adsk-space-xs);
+    font-size: var(--adsk-font-size-sm);
+    min-height: 60px;
+}
+
+body.density-high .adsk-label {
+    font-size: var(--adsk-font-size-xs);
+    margin-bottom: var(--adsk-space-xs);
+}
+
+body.density-high .adsk-form-group {
+    margin-bottom: var(--adsk-space-md);
+}
+
+body.density-high .adsk-checkbox,
+body.density-high .adsk-radio {
+    font-size: var(--adsk-font-size-sm);
+    margin-bottom: var(--adsk-space-xs);
+}
+
+/* Move only the toggle label text up, not the toggle itself */
+body.density-high .adsk-toggle-group > label,
+body.density-high .adsk-toggle-group > span,
+body.density-high .adsk-toggle-group > .adsk-toggle-label,
+body.density-high .adsk-toggle-modal-group .adsk-toggle-modal-label {
+    transform: translateY(-4px); /* Move just the text up - adjust value as needed */
+}
+
+/* High density input-box structure */
+body.density-high .adsk-input-box {
+    height: var(--adsk-input-height-sm, 24px); /* 24px for high density */
+}
+
+body.density-high .adsk-input-box .adsk-input-field {
+    height: calc(var(--adsk-input-height-sm, 24px) - 2px); /* 22px */
+    font-size: var(--adsk-font-size-sm);
+    padding: 0 4px 0 0; /* Reduce padding for high density */
+}
+
+
+/* Modal toggle modifier - overrides checked state colors only */
+.adsk-toggle--modal input[type="checkbox"]:checked + .adsk-toggle-track {
+    /* Keep the same background and border colors as unchecked for modal toggle */
+    background: var(--adsk-color-checkbox-bg);
+    border-color: var(--adsk-color-toggle-border-checked, var(--adsk-color-toggle-border-unchecked));
+}
+
+.adsk-toggle--modal input[type="checkbox"]:checked + .adsk-toggle-track:before {
+    /* Keep the same thumb color as unchecked for modal toggle */
+    background-color: var(--adsk-color-toggle-thumb-checked, var(--adsk-color-toggle-thumb-unchecked));
+}
+
+/* Disabled state */
+.adsk-toggle input[type="checkbox"]:disabled + .adsk-toggle-track {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Dark Blue theme toggle overrides */
+.theme-dark-blue .adsk-toggle-track {
+    border-color: var(--adsk-color-toggle-border-unchecked, var(--adsk-color-checkbox-border));
+}
+
+.theme-dark-blue .adsk-toggle-track:before {
+    background-color: var(--adsk-color-toggle-thumb-unchecked, var(--adsk-color-checkbox-bg-checked));
+}
+
+/* Dark Gray theme toggle overrides */
+.theme-dark-gray .adsk-toggle-track {
+    border-color: var(--adsk-color-toggle-border-unchecked, var(--adsk-color-checkbox-border));
+}
+
+.theme-dark-gray .adsk-toggle-track:before {
+    background-color: var(--adsk-color-toggle-thumb-unchecked, var(--adsk-color-checkbox-bg-checked));
+}
+
+/* Light Gray theme toggle overrides */
+.theme-light-gray .adsk-toggle-track {
+    border-color: var(--adsk-color-toggle-border-unchecked, var(--adsk-color-checkbox-border));
+}
+
+.theme-light-gray .adsk-toggle-track:before {
+    background-color: var(--adsk-color-toggle-thumb-unchecked, var(--adsk-color-checkbox-bg-checked));
+}
+
+/* Toggle with label wrapper */
+.adsk-toggle-group {
+    display: flex;
+    align-items: center; /* Center align vertically */
+    gap: var(--adsk-space-sm);
+    font-size: var(--adsk-font-size-base);
+    line-height: var(--adsk-line-height-base);
+    cursor: pointer;
+    margin-bottom: var(--adsk-space-sm);
+}
+
+.adsk-toggle-group:last-child {
+    margin-bottom: 0;
+}
+
+/* =================================================================== */
+/* MODAL TOGGLE GROUP - A/B Switch Layout */
+/* =================================================================== */
+/* Modal toggle group wrapper - A (switch) B layout */
+.adsk-toggle-modal-group {
+    display: flex;
+    align-items: center; /* Center align vertically */
+    justify-content: center; /* Center the toggle */
+    gap: var(--adsk-space-sm);
+    font-size: var(--adsk-font-size-base);
+    line-height: var(--adsk-line-height-base);
+    cursor: pointer;
+    margin-bottom: var(--adsk-space-sm);
+}
+
+.adsk-toggle-modal-group:last-child {
+    margin-bottom: 0;
+}
+
+.adsk-toggle-modal-group .adsk-toggle-modal-label {
+    color: var(--adsk-color-text-primary); /* Standard UI color */
+    font-size: var(--adsk-font-size-sm);
+    font-weight: 500;
+    transition: color var(--adsk-transition-fast);
+    user-select: none;
+    flex: 1; /* Allow labels to expand */
+}
+
+.adsk-toggle-modal-group .adsk-toggle-modal-label--left {
+    text-align: right; /* Right-align left label to push toward center */
+}
+
+.adsk-toggle-modal-group .adsk-toggle-modal-label--right {
+    text-align: left; /* Left-align right label to push toward center */
+}
+
+/* Active state for labels - make inactive labels slightly dimmer */
+.adsk-toggle-modal-group input[type="checkbox"]:checked ~ .adsk-toggle-modal-label--left {
+    color: var(--adsk-color-text-secondary);
+}
+
+.adsk-toggle-modal-group input[type="checkbox"]:not(:checked) ~ .adsk-toggle-modal-label--right {
+    color: var(--adsk-color-text-secondary);
+}
+
+.adsk-toggle-modal-group input[type="checkbox"]:checked ~ .adsk-toggle-modal-label--right {
+    color: var(--adsk-color-text-primary);
+}
+
+.adsk-toggle-modal-group input[type="checkbox"]:not(:checked) ~ .adsk-toggle-modal-label--left {
+    color: var(--adsk-color-text-primary);
+}
+
+/* =================================================================== */
+/* RANGE SLIDER - Autodesk Fusion 360 Authentic Styles */
+/* =================================================================== */
+
+/* Base slider track - matches Fusion 360 exactly */
+.adsk-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 24px; /* Enough height for 20px thumb + some margin */
+    border-radius: 0px;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    border: 0;
+    margin: 0;
+    transition: all var(--adsk-transition-fast);
+    position: relative;
+    /* Removed overflow: hidden to allow box-shadow highlights to show */
+    
+    /* Theme-adaptive slider colors */
+    color: var(--adsk-color-slider-thumb);
+    --track-height: 2px;
+    --thumb-height: var(--adsk-slider-thumb-height);
+    --thumb-width: var(--adsk-slider-thumb-width);
+    --track-color: var(--adsk-color-slider-track);
+}
+
+/* === WebKit specific styles === */
+.adsk-slider::-webkit-slider-runnable-track,
+.adsk-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    transition: all ease var(--adsk-transition-fast);
+}
+
+.adsk-slider::-webkit-slider-runnable-track,
+.adsk-slider::-webkit-slider-thumb {
+    position: relative;
+}
+
+.adsk-slider::-webkit-slider-runnable-track {
+    background: linear-gradient(var(--track-color) 0 0) scroll no-repeat center / 100% var(--track-height);
+    height: var(--track-height);
+}
+
+/* All slider thumbs - unified approach */
+.adsk-slider::-webkit-slider-thumb {
+    width: var(--thumb-width);
+    height: var(--thumb-height);
+    border-radius: 1px;
+    background: currentColor;
+    cursor: pointer;
+    border: 0;
+    box-shadow: var(--adsk-form-shadow-transparent) 0px 0px 0px 0px;
+    margin-top: calc(var(--track-height) * 0.5 - var(--thumb-height) * 0.5); /* Center thumb relative to track */
+}
+
+/* Progress slider CSS variables for calculation */
+.adsk-slider--progress {
+    --range: calc(var(--max) - var(--min));
+    --ratio: calc((var(--value) - var(--min)) / var(--range));
+    --sx: calc(0.5 * var(--thumb-width) + var(--ratio) * (100% - var(--thumb-width)));
+}
+
+/* Progress slider track with gradient fill */
+.adsk-slider--progress::-webkit-slider-runnable-track {
+    background: linear-gradient(currentColor, currentColor) 0/var(--sx) 100% no-repeat, var(--track-color);
+}
+
+/* Firefox progress slider track */
+.adsk-slider--progress::-moz-range-track {
+    background: linear-gradient(currentColor, currentColor) 0/var(--sx) 100% no-repeat, var(--track-color);
+}
+
+/* Webkit hover state - 2px shadow (not on disabled) */
+.adsk-slider:not(:disabled)::-webkit-slider-thumb:hover {
+    box-shadow: var(--adsk-form-shadow-hover) 0px 0px 0px 2px;
+}
+
+/* Webkit active state - 4px shadow (not on disabled) */
+.adsk-slider:not(:disabled)::-webkit-slider-thumb:active {
+    box-shadow: var(--adsk-form-shadow-active) 0px 0px 0px 4px;
+}
+
+/* === Firefox specific styles === */
+.adsk-slider::-moz-range-track,
+.adsk-slider::-moz-range-thumb {
+    appearance: none;
+    transition: all ease var(--adsk-transition-fast);
+}
+
+.adsk-slider::-moz-range-track,
+.adsk-slider::-moz-range-thumb,
+.adsk-slider::-moz-range-progress {
+    background: transparent;
+}
+
+.adsk-slider::-moz-range-track {
+    width: 100%;
+    background: var(--track-color);
+    height: var(--track-height);
+    border-radius: var(--track-height);
+}
+
+.adsk-slider::-moz-range-thumb {
+    background: currentColor;
+    border: 0;
+    width: var(--thumb-width);
+    height: var(--thumb-height);
+    border-radius: 1px;
+    cursor: pointer;
+    box-shadow: var(--adsk-form-shadow-transparent) 0px 0px 0px 0px;
+}
+
+/* Firefox hover state - 2px shadow (not on disabled) */
+.adsk-slider:not(:disabled)::-moz-range-thumb:hover {
+    box-shadow: var(--adsk-form-shadow-hover) 0px 0px 0px 2px;
+}
+
+/* Firefox active state - 4px shadow (not on disabled) */
+.adsk-slider:not(:disabled)::-moz-range-thumb:active {
+    box-shadow: var(--adsk-form-shadow-active) 0px 0px 0px 4px;
+}
+
+/* Focus state - keyboard navigation (not on disabled) */
+.adsk-slider:not(:disabled):focus-visible {
+    outline: none;
+}
+
+.adsk-slider:not(:disabled):focus-visible::-webkit-slider-thumb {
+    box-shadow: var(--adsk-color-keyboard-focus-shadow) 0px 0px 0px 2px;
+}
+
+.adsk-slider:not(:disabled):focus-visible::-moz-range-thumb {
+    box-shadow: var(--adsk-color-keyboard-focus-shadow) 0px 0px 0px 2px;
+}
+
+/* Disabled state */
+.adsk-slider:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.adsk-slider:disabled::-webkit-slider-thumb {
+    cursor: not-allowed;
+}
+
+.adsk-slider:disabled::-moz-range-thumb {
+    cursor: not-allowed;
+}
+
+/* Input groups */
+.adsk-input-group {
+    display: flex;
+    align-items: stretch;
+}
+
+.adsk-input-group .adsk-input {
+    flex: 1;
+    border-radius: 0;
+}
+
+.adsk-input-group .adsk-input:first-child {
+    border-top-left-radius: var(--adsk-border-radius-medium);
+    border-bottom-left-radius: var(--adsk-border-radius-medium);
+}
+
+.adsk-input-group .adsk-input:last-child {
+    border-top-right-radius: var(--adsk-border-radius-medium);
+    border-bottom-right-radius: var(--adsk-border-radius-medium);
+}
+
+.adsk-input-group .adsk-input:not(:last-child) {
+    border-right: none;
+}
+
+.adsk-input-addon {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--adsk-space-sm);
+    font-size: var(--adsk-font-size-sm);
+    color: var(--adsk-color-text-tertiary);
+    background-color: var(--adsk-color-bg-disabled);
+    border: 1px solid var(--adsk-color-border-default);
+    border-left: none;
+    border-top-right-radius: var(--adsk-border-radius-medium);
+    border-bottom-right-radius: var(--adsk-border-radius-medium);
+    white-space: nowrap;
+}
+
+/* Form validation messages */
+.adsk-form-help {
+    font-size: var(--adsk-font-size-sm);
+    color: var(--adsk-color-text-tertiary);
+    margin-top: var(--adsk-space-xs);
+}
+
+.adsk-form-error {
+    font-size: var(--adsk-font-size-sm);
+    color: var(--adsk-color-status-error);
+    margin-top: var(--adsk-space-xs);
+}
+
+.adsk-form-success {
+    font-size: var(--adsk-font-size-sm);
+    color: var(--adsk-color-status-success);
+    margin-top: var(--adsk-space-xs);
+}
+
+/* =================================================================== */
+/* DENSITY OVERRIDES - Medium Density */
+/* =================================================================== */
+
+body.density-medium .adsk-input {
+    height: var(--adsk-input-height-medium-base, 36px);
+    padding: 0 12px;
+    font-size: 14px;
+}
+
+body.density-medium .adsk-select {
+    height: var(--adsk-input-height-medium-base, 36px);
+    padding: 0 12px;
+    font-size: 14px;
+}
+
+body.density-medium .adsk-textarea {
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* =================================================================== */
+/* MEDIUM DENSITY OVERRIDES */
+/* =================================================================== */
+body.density-medium {
+    /* Update CSS variables for medium density - cleaner than individual overrides */
+    --adsk-checkbox-size: var(--adsk-checkbox-size-medium);
+    --adsk-radio-size: var(--adsk-radio-size-medium);
+    --adsk-radio-inset-size: var(--adsk-radio-inset-size-medium);
+    --adsk-toggle-width: var(--adsk-toggle-width-medium);
+    --adsk-toggle-height: var(--adsk-toggle-height-medium);
+    --adsk-toggle-thumb-size: var(--adsk-toggle-thumb-size-medium);
+    --adsk-toggle-throw: var(--adsk-toggle-throw-medium);
+    --adsk-slider-thumb-width: var(--adsk-slider-thumb-width-medium);
+    --adsk-slider-thumb-height: var(--adsk-slider-thumb-height-medium);
+}
+
+/* Checkbox medium density adjustments */
+body.density-medium .adsk-checkbox input[type="checkbox"] {
+    font-size: 14px;
+}
+
+body.density-medium .adsk-checkbox input[type="checkbox"]:checked + .adsk-checkbox-mark::after {
+    top: 3px; /* Adjusted for 16px checkbox */
+    left: 5px; /* Adjusted for 16px checkbox */
+    width: 4px; /* Original size for 16px checkbox */
+    height: 8px; /* Original size for 16px checkbox */
+    border-width: 0 2px 2px 0; /* Original thickness for 16px checkbox */
+}
+
+body.density-medium .adsk-checkbox input[type="checkbox"]:indeterminate + .adsk-checkbox-mark::after {
+    top: 6px; /* Centered for 16px checkbox */
+    left: 3px; /* Adjusted for 16px checkbox */
+    width: 8px; /* Original size for 16px checkbox */
+    height: 2px; /* Original thickness for 16px checkbox */
+}
+
+/* Radio button medium density adjustments */
+body.density-medium .adsk-radio {
+    font-size: 14px;
+}
+
+/* Toggle medium density adjustments - now use CSS variables! */
+/* No additional CSS needed - variables handle everything automatically */
+
+/* Move only the toggle label text up, not the toggle itself */
+body.density-medium .adsk-toggle-group > label,
+body.density-medium .adsk-toggle-group > span,
+body.density-medium .adsk-toggle-group > .adsk-toggle-label,
+body.density-medium .adsk-toggle-modal-group .adsk-toggle-modal-label {
+    transform: translateY(-4px); /* Move just the text up - adjust value as needed */
+}
+
+/* Form elements medium density */
+body.density-medium .adsk-form-group {
+    margin-bottom: 16px;
+}
+
+body.density-medium .adsk-label {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+body.density-medium .adsk-input-group .adsk-input {
+    height: 36px;
+}
+
+body.density-medium .adsk-input-addon {
+    height: 36px;
+    padding: 0 12px;
+    font-size: 14px;
+}

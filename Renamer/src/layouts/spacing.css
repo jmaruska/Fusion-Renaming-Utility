@@ -1,0 +1,185 @@
+/* Autodesk Design System - Spacing Utilities */
+/* Contextual spacing that respects density settings */
+
+/*/* Margin utilities (Use Sparingly) */
+.adsk-m-none { margin: 0; }
+.adsk-m-xs { margin: var(--adsk-space-xs); }
+.adsk-m-sm { margin: var(--adsk-space-sm); }
+.adsk-m-md { margin: var(--adsk-space-md); }
+.adsk-m-lg { margin: var(--adsk-space-lg); }
+
+.adsk-mt-xs { margin-top: var(--adsk-space-xs); }
+.adsk-mb-xs { margin-bottom: var(--adsk-space-xs); }
+.adsk-ml-xs { margin-left: var(--adsk-space-xs); }
+.adsk-mr-xs { margin-right: var(--adsk-space-xs); }
+
+.adsk-mt-sm { margin-top: var(--adsk-space-sm); }
+.adsk-mb-sm { margin-bottom: var(--adsk-space-sm); }
+.adsk-ml-sm { margin-left: var(--adsk-space-sm); }
+.adsk-mr-sm { margin-right: var(--adsk-space-sm); }
+
+.adsk-mt-md { margin-top: var(--adsk-space-md); }
+.adsk-mb-md { margin-bottom: var(--adsk-space-md); }
+.adsk-ml-md { margin-left: var(--adsk-space-md); }
+.adsk-mr-md { margin-right: var(--adsk-space-md); }
+
+.adsk-mt-lg { margin-top: var(--adsk-space-lg); }
+.adsk-mb-lg { margin-bottom: var(--adsk-space-lg); }
+.adsk-ml-lg { margin-left: var(--adsk-space-lg); }
+.adsk-mr-lg { margin-right: var(--adsk-space-lg); }
+
+/* Medium density overrides */
+body.density-medium .adsk-m-xs { margin: var(--adsk-space-medium-xs); }
+body.density-medium .adsk-m-sm { margin: var(--adsk-space-medium-sm); }
+body.density-medium .adsk-m-md { margin: var(--adsk-space-medium-md); }
+body.density-medium .adsk-m-lg { margin: var(--adsk-space-medium-lg); }
+
+body.density-medium .adsk-mt-xs { margin-top: var(--adsk-space-medium-xs); }
+body.density-medium .adsk-mb-xs { margin-bottom: var(--adsk-space-medium-xs); }
+body.density-medium .adsk-ml-xs { margin-left: var(--adsk-space-medium-xs); }
+body.density-medium .adsk-mr-xs { margin-right: var(--adsk-space-medium-xs); }
+
+body.density-medium .adsk-mt-sm { margin-top: var(--adsk-space-medium-sm); }
+body.density-medium .adsk-mb-sm { margin-bottom: var(--adsk-space-medium-sm); }
+body.density-medium .adsk-ml-sm { margin-left: var(--adsk-space-medium-sm); }
+body.density-medium .adsk-mr-sm { margin-right: var(--adsk-space-medium-sm); }
+
+body.density-medium .adsk-mt-md { margin-top: var(--adsk-space-medium-md); }
+body.density-medium .adsk-mb-md { margin-bottom: var(--adsk-space-medium-md); }
+body.density-medium .adsk-ml-md { margin-left: var(--adsk-space-medium-md); }
+body.density-medium .adsk-mr-md { margin-right: var(--adsk-space-medium-md); }
+
+body.density-medium .adsk-mt-lg { margin-top: var(--adsk-space-medium-lg); }
+body.density-medium .adsk-mb-lg { margin-bottom: var(--adsk-space-medium-lg); }
+body.density-medium .adsk-ml-lg { margin-left: var(--adsk-space-medium-lg); }
+body.density-medium .adsk-mr-lg { margin-right: var(--adsk-space-medium-lg); }
+/* SPACING UTILITY CLASSES */
+/* =================================================================== */
+
+/* Stack - Vertical spacing */
+.adsk-stack {
+    display: flex;
+    flex-direction: column;
+}
+
+.adsk-stack--xs { gap: var(--adsk-space-xs); }
+.adsk-stack--sm { gap: var(--adsk-space-sm); }
+.adsk-stack--md { gap: var(--adsk-space-md); }
+.adsk-stack--lg { gap: var(--adsk-space-lg); }
+.adsk-stack--xl { gap: var(--adsk-space-xl); }
+
+/* Row - Horizontal spacing */
+.adsk-row {
+    display: flex;
+    align-items: center;
+}
+
+.adsk-row--xs { gap: var(--adsk-space-xs); }
+.adsk-row--sm { gap: var(--adsk-space-sm); }
+.adsk-row--md { gap: var(--adsk-space-md); }
+.adsk-row--lg { gap: var(--adsk-space-lg); }
+.adsk-row--xl { gap: var(--adsk-space-xl); }
+
+/* Grid - 2D spacing */
+.adsk-grid {
+    display: grid;
+}
+
+.adsk-grid--xs { gap: var(--adsk-space-xs); }
+.adsk-grid--sm { gap: var(--adsk-space-sm); }
+.adsk-grid--md { gap: var(--adsk-space-md); }
+.adsk-grid--lg { gap: var(--adsk-space-lg); }
+.adsk-grid--xl { gap: var(--adsk-space-xl); }
+
+/* =================================================================== */
+/* DENSITY-AWARE SPACING OVERRIDES */
+/* =================================================================== */
+
+/* High Density (Default) - Uses base variables */
+
+/* Medium Density - Override to larger spacing */
+body.density-medium .adsk-stack--xs { gap: var(--adsk-space-medium-xs); }
+body.density-medium .adsk-stack--sm { gap: var(--adsk-space-medium-sm); }
+body.density-medium .adsk-stack--md { gap: var(--adsk-space-medium-md); }
+body.density-medium .adsk-stack--lg { gap: var(--adsk-space-medium-lg); }
+body.density-medium .adsk-stack--xl { gap: var(--adsk-space-medium-xl); }
+
+body.density-medium .adsk-row--xs { gap: var(--adsk-space-medium-xs); }
+body.density-medium .adsk-row--sm { gap: var(--adsk-space-medium-sm); }
+body.density-medium .adsk-row--md { gap: var(--adsk-space-medium-md); }
+body.density-medium .adsk-row--lg { gap: var(--adsk-space-medium-lg); }
+body.density-medium .adsk-row--xl { gap: var(--adsk-space-medium-xl); }
+
+body.density-medium .adsk-grid--xs { gap: var(--adsk-space-medium-xs); }
+body.density-medium .adsk-grid--sm { gap: var(--adsk-space-medium-sm); }
+body.density-medium .adsk-grid--md { gap: var(--adsk-space-medium-md); }
+body.density-medium .adsk-grid--lg { gap: var(--adsk-space-medium-lg); }
+body.density-medium .adsk-grid--xl { gap: var(--adsk-space-medium-xl); }
+
+body.density-medium .adsk-grid--xs { gap: var(--adsk-space-medium-xs); }
+body.density-medium .adsk-grid--sm { gap: var(--adsk-space-medium-sm); }
+body.density-medium .adsk-grid--md { gap: var(--adsk-space-medium-md); }
+body.density-medium .adsk-grid--lg { gap: var(--adsk-space-medium-lg); }
+body.density-medium .adsk-grid--xl { gap: var(--adsk-space-medium-xl); }
+
+/* =================================================================== */
+/* SPECIALIZED LAYOUT PATTERNS */
+/* =================================================================== */
+
+/* Button groups - semantic spacing */
+.adsk-button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--adsk-space-sm);
+}
+
+body.density-medium .adsk-button-group {
+    gap: var(--adsk-space-medium-sm);
+}
+
+/* Form groups - consistent form spacing */
+.adsk-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--adsk-space-xs);
+}
+
+body.density-medium .adsk-form-group {
+    gap: var(--adsk-space-medium-xs);
+}
+
+/* Toolbar spacing */
+.adsk-toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: var(--adsk-space-md);
+}
+
+body.density-medium .adsk-toolbar-group {
+    gap: var(--adsk-space-medium-md);
+}
+
+/* =================================================================== */
+/* MARGIN UTILITIES (Use Sparingly) */
+/* =================================================================== */
+
+/* Only for exceptional cases where gap doesn't work */
+.adsk-m-none { margin: 0; }
+.adsk-m-xs { margin: var(--adsk-space-xs); }
+.adsk-m-sm { margin: var(--adsk-space-sm); }
+.adsk-m-md { margin: var(--adsk-space-md); }
+
+.adsk-mt-xs { margin-top: var(--adsk-space-xs); }
+.adsk-mb-xs { margin-bottom: var(--adsk-space-xs); }
+.adsk-ml-xs { margin-left: var(--adsk-space-xs); }
+.adsk-mr-xs { margin-right: var(--adsk-space-xs); }
+
+/* Medium density overrides */
+body.density-medium .adsk-m-xs { margin: var(--adsk-space-medium-xs); }
+body.density-medium .adsk-m-sm { margin: var(--adsk-space-medium-sm); }
+body.density-medium .adsk-m-md { margin: var(--adsk-space-medium-md); }
+
+body.density-medium .adsk-mt-xs { margin-top: var(--adsk-space-medium-xs); }
+body.density-medium .adsk-mb-xs { margin-bottom: var(--adsk-space-medium-xs); }
+body.density-medium .adsk-ml-xs { margin-left: var(--adsk-space-medium-xs); }
+body.density-medium .adsk-mr-xs { margin-right: var(--adsk-space-medium-xs); }

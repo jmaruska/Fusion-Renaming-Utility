@@ -2,6 +2,8 @@
 
 Renamer is a small add-in for Autodesk Fusion 360 that provides a suite of powerful renaming tools for components and bodies. It offers flexible scope selection, allowing you to rename across your entire document, within hierarchies, or just your current multi-selection.
 
+<img src="https://raw.githubusercontent.com/jmaruska/Fusion-Renaming-Utility/refs/heads/main/images/Renamer%402x.png" width= 350px>
+
 ---
 
 ## Features
